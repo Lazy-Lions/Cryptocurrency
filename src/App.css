@@ -1,0 +1,48 @@
+
+.upper {
+  background-color: #0e1318;
+  color: #bebebe;
+}
+.card-container{
+  background-color: #00101f;
+  color: #bebebe;
+}
+.card:hover{
+  box-shadow: 6px 6px 8px rgb(0, 0, 26);
+  transform:scale(1.1);
+}
+.card{
+
+  border-radius: 1rem;
+  text-align: center;
+  color: rgb(0, 0, 26);
+  transition:.5s;
+  margin: 1rem auto ;
+
+}
+.footer{
+  
+  background-color: #000014;
+  padding: 5rem;
+  
+}
+.footer-card{
+  
+  border-radius: .5rem;
+  background-color: #5cb85c;
+}
+h4{
+  padding-left: 1rem;
+}
+.footer-card:hover{
+  
+  box-shadow: 6px 6px 8px rgb(0, 0, 26);
+  transform:scale(1.001);
+}
+.register{
+  border-radius: 1rem;
+  margin: 0 20%;
+  padding: 2% 5%;
+  align-content: center;
+  
+}
