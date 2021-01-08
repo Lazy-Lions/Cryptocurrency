@@ -3,6 +3,7 @@ import "../App.css";
 import {Col,Row,Button, Form, FormControl} from 'react-bootstrap'
 import Responsive from 'react-responsive';
 import Footer from '../components/Footer';
+import FourTopperChart from "../components/FourTopperChart";
 export default class Dashboard extends Component {
   render() {
     const Desktop = props => <Responsive {...props} minWidth={992} />;
@@ -48,27 +49,19 @@ export default class Dashboard extends Component {
             </Form>
           </Col> 
         </div>
-        <div className="card-container" style={{padding:'2rem 2rem'}}>
+        <div className="card-container">
           <Row xs={1} md={2} lg={4} >
             <Col xs={8} md={5} lg={2} className="card" >
-            <h3 >Bitcoin</h3>
-            <h4>$2,748.94</h4>
-            <h6>+1.28%</h6>
+            <FourTopperChart name="btc"/>
             </Col>
             <Col xs={8} md={5} lg={2} className="card" >
-            <h3 >Ethereum</h3>
-            <h4>$2,748.94</h4>
-            <h6>+1.28%</h6>
+            <FourTopperChart name="eth"/>
             </Col>
             <Col xs={8} md={5} lg={2} className="card" >
-            <h3 >Ripple</h3>
-            <h4>$2,748.94</h4>
-            <h6>+1.28%</h6>
+            <FourTopperChart name="ltc"/>
             </Col>
             <Col xs={8} md={5} lg={2} className="card" >
-            <h3 >Litecoin</h3>
-            <h4>$2,748.94</h4>
-            <h6>+1.28%</h6>
+            <FourTopperChart name="bch"/>
             </Col> 
           </Row>
         </div>

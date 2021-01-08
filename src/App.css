@@ -12,8 +12,10 @@
   transform:scale(1.1);
 }
 .card{
-
+  background-color: #131722;
+  padding:2rem 0rem;
   border-radius: 1rem;
+  border: 1px solid #5c5a5a;
   text-align: center;
   color: rgb(0, 0, 26);
   transition:.5s;
