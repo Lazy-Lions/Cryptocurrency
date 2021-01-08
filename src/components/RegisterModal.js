@@ -23,8 +23,7 @@ export default function RegisterModal() {
             <Modal.Body>
                 <div className="text-center">
                     <img src={logo} alt="logo" style={{height:'200px', width:'250px', paddingBottom:'2rem'}} />
-                    <p>Never a better time than now to start thinking about
-                         how you can manage all your finances and crypto assets from one place.</p>
+                    <p> You can manage all your finances and crypto assets from one place.</p>
                     <Button as={Link} to="/register" onClick={() => setShow(false)}>Create Account</Button>
                 </div>
              

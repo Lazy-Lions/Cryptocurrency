@@ -1,0 +1,40 @@
+{
+    "aboutus":
+    {
+        "about":"this is about",
+        "affiliate":"",
+        "terms":"",
+        "announcements":"",
+        "privacy":""
+    },
+    "products":
+    {
+        "exchange":" ",
+        "access":" ",
+        "wallet":" "
+    },
+    "supports":
+    {
+        "feedback":" ",
+        "support":" "
+    },
+    "learn":
+    {
+        "crypto":" ",
+        "bitcoin":" ",
+        "blockchain":" ",
+        "buycrypto":" ",
+        "buybitcoin":" ",
+        "buyethereum":" ",
+        "buyripple":" ",
+        "buylitecoin":" "
+    },
+    "community":
+    {
+        "facebook":"",
+        "instagram":"",
+        "twitter":"",
+        "telegram":" "
+    }
+    
+}

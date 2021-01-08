@@ -6,7 +6,7 @@ export default function Notification() {
     const [lgShow, setLgShow] = React.useState(false);
     return (
         <div>
-               <IoIcons.IoIosNotificationsOutline onClick={() => setLgShow(true)}/>
+               <IoIcons.IoMdNotificationsOutline size={30} onClick={() => setLgShow(true)}/>
                <Modal
                 size="lg"
                 show={lgShow}

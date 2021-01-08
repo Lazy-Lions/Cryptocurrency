@@ -24,13 +24,13 @@ export default class Dashboard extends Component {
           <Col className='text-center'>
           <div className='upper-text'>
             <Mobile>
-            <h3 style={{paddingTop:'2rem'}}><Headline/></h3>
+            <h3 style={{paddingTop:'4rem'}}><Headline/></h3>
             </Mobile>
             <Tablet>
-            <h2 style={{paddingTop:'4rem'}}><Headline/></h2>
+            <h2 style={{paddingTop:'6rem'}}><Headline/></h2>
             </Tablet>
             <Desktop>
-            <h1 style={{paddingTop:'6rem'}}><Headline/></h1>
+            <h1 style={{paddingTop:'8rem'}}><Headline/></h1>
             </Desktop>
             <Mobile>
             <p style={{paddingBottom:'2rem'}}><Promoline/> </p>
