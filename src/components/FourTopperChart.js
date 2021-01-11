@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default class FourTopperChart extends React.PureComponent {
   constructor(props) {
@@ -14,8 +14,8 @@ export default class FourTopperChart extends React.PureComponent {
       symbols: [
         
         {
-          description: (this.props.name=='btc')?"BTC":(this.props.name=='eth')?"ETH":(this.props.name=='ltc')?"LTC":"BCH",
-          proName: (this.props.name=='btc')? "COINBASE:BTCUSD":(this.props.name=='eth')?"COINBASE:ETHUSD":(this.props.name=='ltc')?"COINBASE:LTCUSD":"COINBASE:BCHUSD",
+          description: (this.props.name==='btc')?"BTC":(this.props.name==='eth')?"ETH":(this.props.name==='ltc')?"LTC":"BCH",
+          proName: (this.props.name==='btc')? "COINBASE:BTCUSD":(this.props.name==='eth')?"COINBASE:ETHUSD":(this.props.name==='ltc')?"COINBASE:LTCUSD":"COINBASE:BCHUSD",
         },
       ],
       showSymbolLogo: true,

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from 'react-icons/fa';
 import Notification from './Notification';
 import SendReceive from "../pages/SendReceive";
+import ProfileDrop from "./ProfileDrop";
 export default class AnotherNav extends Component {
       render() {
         const Desktop = props => <Responsive {...props} minWidth={992} />;
@@ -21,8 +22,7 @@ export default class AnotherNav extends Component {
               </Nav>
               <Nav >
                 <Nav.Link ><Notification/></Nav.Link>
-                <Nav.Link as={Link} to="/profile-setting"><FaIcons.FaUserCog size={30}/></Nav.Link>
-                <Nav.Link as={Link} to="/user"><FaIcons.FaUserCircle size={30}/> User</Nav.Link>
+                <Nav.Link ><ProfileDrop/></Nav.Link>
               </Nav>
             </Navbar>
           </Desktop>

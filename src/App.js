@@ -11,7 +11,7 @@ export default class App extends Component {
   constructor(){
     super()
     this.state={
-      login:false
+      login:true
     }
   }
   render(){
@@ -28,7 +28,7 @@ export default class App extends Component {
       <Router>
         <AnotherNav />
       <Switch>
-      <Route path='/profile-setting' exact component={Settings} />
+      <Route path='/settings' exact component={Settings} />
       <Route path='/' exact component={Wallet} />
       </Switch>
       </Router>

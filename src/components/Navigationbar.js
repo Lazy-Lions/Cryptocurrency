@@ -14,8 +14,7 @@ export default class Navigationbar extends Component {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                     <RegisterModal/>
-                    <Nav.Link as={Link} to="/trading-market">Trading Market</Nav.Link>
-                   
+                    <Nav.Link as={Link} to="/trading-market">Trading Market</Nav.Link>   
                     </Nav>
                     <Nav >
                     <Nav.Link >
