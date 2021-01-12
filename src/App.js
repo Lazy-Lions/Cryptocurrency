@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
 import Settings from './pages/Settings';
 import Wallet from './pages/Wallet';
+import Profile from './pages/Profile';
 
 export default class App extends Component {
   constructor(){
@@ -28,6 +29,7 @@ export default class App extends Component {
       <Router>
         <AnotherNav />
       <Switch>
+      <Route path='/profile' exact component={Profile} />
       <Route path='/settings' exact component={Settings} />
       <Route path='/' exact component={Wallet} />
       </Switch>

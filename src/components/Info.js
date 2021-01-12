@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form, Segment, Select } from 'semantic-ui-react'
 export default class Info extends Component {
     constructor () {
         super();
@@ -8,6 +8,7 @@ export default class Info extends Component {
           last:"Sleeper",
           email:"lazysleeper@cse.pstu.ac.bd",
           birthday:"",
+          gender:"",
           address:"",
           city:"",
           postcode:"",
@@ -25,6 +26,11 @@ export default class Info extends Component {
         alert('Info saved successfully')
     }
     render() {
+        const genderOptions = [
+            { key: 'm', text: 'Male', value: 'male' },
+            { key: 'f', text: 'Female', value: 'female' },
+            { key: 'o', text: 'Other', value: 'other' },
+          ]
         return (
             <Segment inverted basic textAlign={"center"}>
                 <Form inverted>
@@ -39,6 +45,16 @@ export default class Info extends Component {
                     type="email" id="email" value={this.state.house} placeholder="Email Address" onChange={this.handleChange}/>
                     <Form.Input fluid label='Birthday' 
                     type="date" id="birthday" value={this.state.house} placeholder="Birthday" onChange={this.handleChange}/>
+                    <Form.Field
+                        id="gender"
+                        control={Select}
+                        options={genderOptions}
+                        label={{ children: 'Gender'}}
+                        placeholder='Gender'
+                        value={this.state.house}
+                        search
+                        onChange={this.handleChange}
+                    />
                 </Form.Group>
                 <Form.Group widths='equal'>
                     <Form.Input fluid label='Address' 

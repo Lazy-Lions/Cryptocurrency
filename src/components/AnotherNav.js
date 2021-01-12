@@ -30,16 +30,17 @@ export default class AnotherNav extends Component {
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand as={Link} to="/">Cryptocurrency</Navbar.Brand>
                 <Nav className="ml-auto">
-                <Nav.Link ><Notification/></Nav.Link>             
+                <Nav.Link ><Notification/></Nav.Link>
+                <Nav.Link ><ProfileDrop/></Nav.Link>             
               </Nav>
             </Navbar>
             <Navbar fixed="bottom" bg="primary" variant="dark">
+              <Nav className="ml-auto parent " >
+              <Nav.Link as={Link} to="/wallet" ><FaIcons.FaWallet size={30}/></Nav.Link></Nav>
               <Nav className="mx-auto parent " >
-                <Nav.Link as={Link} to="/profile-setting" ><FaIcons.FaUserCog size={30}/></Nav.Link>
-                <Nav.Link as={Link} to="/wallet" ><FaIcons.FaWallet size={30}/></Nav.Link>
-                <SendReceive/>
-                <Nav.Link as={Link} to="/trading" ><FaIcons.FaChartBar size={30}/></Nav.Link>
-                <Nav.Link as={Link} to="/user" ><FaIcons.FaUserCircle size={30}/></Nav.Link>
+              <SendReceive/></Nav>
+              <Nav className="mr-auto parent " >
+              <Nav.Link as={Link} to="/trading" ><FaIcons.FaChartBar size={30}/></Nav.Link>
               </Nav>
             </Navbar>
           </Mobile>
