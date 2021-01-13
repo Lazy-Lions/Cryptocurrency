@@ -32,9 +32,9 @@ export default class Dashboard extends Component {
     const ChartCard =(props)=>{
       return(
         <Grid.Column>
-              <Segment className='dashboardCard' style={Style.card}>
-              <FourTopperChart name={props.currencyName}/>
-              </Segment>
+          <Segment className='dashboardCard' style={Style.card}>
+            <FourTopperChart name={props.currencyName}/> 
+          </Segment>
           </Grid.Column>
       )
     }
@@ -63,7 +63,7 @@ export default class Dashboard extends Component {
       }
     }
     return (
-      <div>
+      <div className='topPad'>
         <div style={Style.header}>
           <Col className='text-center'>
           <div >

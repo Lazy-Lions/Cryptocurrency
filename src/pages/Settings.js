@@ -1,7 +1,5 @@
 import React from 'react'
-import { Tab } from 'semantic-ui-react'
-import Password from '../components/Password'
-import Security from '../components/Security'
+import { Tab, Button, Form, Segment, Divider, Image} from 'semantic-ui-react'
 import Info from '../components/Info'
 import Responsive from 'react-responsive';
 
@@ -12,16 +10,38 @@ const panes = [
   { menuItem: 'Change Password', render: () => <Tab.Pane><Password/></Tab.Pane> },
   { menuItem: 'Security', render: () => <Tab.Pane><Security/></Tab.Pane> },
 ]
+const Password = () => (
+  <Segment inverted basic textAlign={"center"}>
+    <Form inverted>
+      <Form.Group widths='equal'>
+        <Form.Input fluid label='Old Password' placeholder='Old Password' />
+        <Form.Input fluid label='New Password' placeholder='New Password' />
+      </Form.Group>
+      <Button type='submit'>Submit</Button>
+    </Form>
+  </Segment>
+)
+const Security = () => (
+  <Segment inverted>
+    <Divider horizontal inverted>
+    <h1>2-Step Verification</h1> 
+    </Divider>
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    <Divider inverted />
 
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    
+  </Segment>
+)
 const Settings = () => (
-<>
-<Desktop>
-<Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
-</Desktop>
-<Mobile>
-<Tab panes={panes} /> 
-</Mobile> 
-</>
+  <div className="fixPad">
+    <Desktop>
+    <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+    </Desktop>
+    <Mobile >
+    <Tab panes={panes} /> 
+    </Mobile> 
+  </div>
 )
 
 export default Settings

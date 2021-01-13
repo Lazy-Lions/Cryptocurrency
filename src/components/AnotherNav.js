@@ -10,6 +10,7 @@ export default class AnotherNav extends Component {
       render() {
         const Desktop = props => <Responsive {...props} minWidth={992} />;
         const Mobile = props => <Responsive {...props} maxWidth={991} />;
+        
         return (
           <>
           <Desktop>
@@ -27,7 +28,7 @@ export default class AnotherNav extends Component {
             </Navbar>
           </Desktop>
           <Mobile>
-            <Navbar bg="dark" variant="dark">
+            <Navbar fixed='top' bg="dark" variant="dark" >
                 <Navbar.Brand as={Link} to="/">Cryptocurrency</Navbar.Brand>
                 <Nav className="ml-auto">
                 <Nav.Link ><Notification/></Nav.Link>

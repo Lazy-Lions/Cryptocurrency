@@ -12,6 +12,7 @@ export default class Profile extends Component {
       showFileUpload() {
         this.fileUpload.current.click();
       }
+    
     render() {
         const SparkCard =(props)=>{
             return(
@@ -25,8 +26,9 @@ export default class Profile extends Component {
                 </Grid.Column>
             )
         }
+        
         return (
-                <Container fluid >
+                <Container fluid className='fixPad'>
                 <Grid.Row >
                 <Grid.Column width={3} style={{margin:'2rem'}}>
                     <div className="AddImage">
@@ -50,12 +52,12 @@ export default class Profile extends Component {
                     </Card.Group>
                 </Grid.Column>
                 </Grid.Row>
-                <Grid columns={4} stackable divided >
+                <Grid columns={4} stackable divided  >
                     <Grid.Row columns={4} >
                         <SparkCard 
                             sparkData={[5, 10, 5, 25, 15, 5, 10, 5, 20, 5, 10, 10, 5, 20, 5, 10]}
                             sparkLabel='Total Transaction'
-                            transaction='16,000'
+                            transaction='16,00'
                         />
                         <SparkCard 
                             sparkData={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}

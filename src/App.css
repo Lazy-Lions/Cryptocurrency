@@ -17,3 +17,12 @@
     max-width: 320px;
   }
 }
+@media all and (max-width: 991px){
+  .fixPad { 
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .topPad{
+    padding-top: 3rem;
+  } 
+} 

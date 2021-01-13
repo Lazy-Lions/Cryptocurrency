@@ -32,7 +32,7 @@ export default class Info extends Component {
             { key: 'o', text: 'Other', value: 'other' },
           ]
         return (
-            <Segment inverted basic textAlign={"center"}>
+            <Segment inverted textAlign={"center"}>
                 <Form inverted>
                 <Form.Group widths='equal'>
                     <Form.Input fluid label='First name'
