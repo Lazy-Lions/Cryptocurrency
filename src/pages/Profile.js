@@ -13,10 +13,21 @@ export default class Profile extends Component {
         this.fileUpload.current.click();
       }
     render() {
+        const SparkCard =(props)=>{
+            return(
+                <Grid.Column>
+                    <Card centered color='blue'>
+                    <Sparklines data={props.sparkData}>
+                        <SparklinesBars />
+                    </Sparklines>
+                    <Statistic label={props.sparkLabel} value= {props.transaction} />                       
+                    </Card>
+                </Grid.Column>
+            )
+        }
         return (
-            
                 <Container fluid >
-                <Grid.Row>
+                <Grid.Row >
                 <Grid.Column width={3} style={{margin:'2rem'}}>
                     <div className="AddImage">
                        <input
@@ -28,56 +39,42 @@ export default class Profile extends Component {
                         <Icon.Group size='huge'>
                         <Image src={Img}  size='medium'/>
                         <Icon corner name='camera' onClick={this.showFileUpload} style={{cursor: 'pointer'}}/>
-                        </Icon.Group>
-                        
+                        </Icon.Group>    
                     </div>
                    
                 </Grid.Column>
                 <Grid.Column width={13} style={{margin:'2rem'}}>
-                <Card.Group>
-                <Card fluid color='yellow' header='Fardin Islam' />
-                <Card fluid color='yellow' header='CRZ3476534567353' />
-                </Card.Group>
+                    <Card.Group>
+                        <Card fluid color='yellow' header='Fardin Islam'/>
+                        <Card fluid color='yellow' header='CRZ3476534567353'/>
+                    </Card.Group>
                 </Grid.Column>
                 </Grid.Row>
                 <Grid columns={4} stackable divided >
-                <Grid.Row columns={4} >
-                <Grid.Column >
-                    <Card centered color='blue'>
-                    <Sparklines data={[5, 10, 5, 20, 5, 10, 5, 20, 5, 10, 5, 20, 5, 10, 5, 20]}>
-                        <SparklinesBars />
-                    </Sparklines>
-                    <Statistic label='Total Transaction' value='5,550' />                       
-                    </Card>
-                </Grid.Column>
-                <Grid.Column >
-                    <Card centered color='green'>
-                    <Sparklines data={[5, 10, 5, 20, 10, 5, 10, 5, 20, 5, 10, 10, 5, 20, 5, 10]}>
-                        <SparklinesBars />
-                    </Sparklines> 
-                    <Statistic label='Send' value='5,550' />  
-                    </Card>
-                </Grid.Column>
-                <Grid.Column >
-                    <Card centered color='yellow'>
-                    <Sparklines data={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}>
-                        <SparklinesBars />
-                    </Sparklines>  
-                    <Statistic label='Received' value='5,550' />     
-                    </Card>
-                </Grid.Column>
-                <Grid.Column >
-                    <Card centered color='red'>
-                    <Sparklines data={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}>
-                        <SparklinesBars />
-                    </Sparklines>  
-                    <Statistic label='Exchanged' value='5,550' />     
-                    </Card>
-                </Grid.Column>
-                </Grid.Row>
+                    <Grid.Row columns={4} >
+                        <SparkCard 
+                            sparkData={[5, 10, 5, 25, 15, 5, 10, 5, 20, 5, 10, 10, 5, 20, 5, 10]}
+                            sparkLabel='Total Transaction'
+                            transaction='16,000'
+                        />
+                        <SparkCard 
+                            sparkData={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}
+                            sparkLabel='Send'
+                            transaction='5,500'
+                        />
+                        <SparkCard 
+                            sparkData={[5, 10, 5, 25, 15, 5, 10, 5, 20, 5, 10, 10, 5, 20, 5, 10]}
+                            sparkLabel='Received'
+                            transaction='4,500'
+                        />
+                        <SparkCard 
+                            sparkData={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}
+                            sparkLabel='Exchanged'
+                            transaction='6,000'
+                        />
+                    </Grid.Row>
                 </Grid>
                 </Container>
-            
         )
     }
 }

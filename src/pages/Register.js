@@ -2,8 +2,14 @@ import React, { Component } from 'react'
 import { Form, Button } from "react-bootstrap";
 export default class Register extends Component {
     render() {
+        const Style={
+            borderRadius: '1rem',
+            margin: '0 20%',
+            padding: '2% 5%',
+            alignContent: 'center'
+        }
         return (
-            <div className='register ' >
+            <div style={Style}>
                 <Form >
                     <Form.Group controlId="formFirstName">
                         <Form.Label>First Name</Form.Label>

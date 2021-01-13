@@ -5,6 +5,12 @@ import logo from "./img/Bellhop.jpg";
 
 export default function RegisterModal() {
     const [show, setShow] = useState(false);
+    const Style={
+        height:'200px', 
+        width:'250px',
+        borderRadius:'2rem', 
+        paddingBottom:'2rem'
+    }
     return (
         <>
         <Nav.Link onClick={() => setShow(true)}>Exchange</Nav.Link>
@@ -22,8 +28,8 @@ export default function RegisterModal() {
             </Modal.Header>
             <Modal.Body>
                 <div className="text-center">
-                    <img src={logo} alt="logo" style={{height:'200px', width:'250px', paddingBottom:'2rem'}} />
-                    <p> You can manage all your finances and crypto assets from one place.</p>
+                    <img src={logo} alt="logo" style={Style} />
+                    <p> You can manage crypto assets from one place</p>
                     <Button as={Link} to="/register" onClick={() => setShow(false)}>Create Account</Button>
                 </div>
              

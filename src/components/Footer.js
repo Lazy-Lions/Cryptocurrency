@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { Col,Nav,Row,Button,Accordion,Card } from 'react-bootstrap'
 import Responsive from 'react-responsive';
-
-
 export default class Footer extends Component {
    
     render() {
@@ -60,103 +58,59 @@ export default class Footer extends Component {
                 </>
             )
         }
+        const AccordionCard =(props)=>{
+            return(
+                <Card style={Style.card}>
+                            <Card.Header>
+                                <Accordion.Toggle as={Button} variant="outline-warning" eventKey={props.ekey}>
+                                    <h5>{props.title}</h5>
+                                </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey={props.ekey}>
+                                <Card.Body>
+                                    {props.content}
+                                </Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+            )
+        }
+        const Style ={
+            footer:{
+                backgroundColor: '#000014',
+                color: 'whitesmoke',
+                paddingBlock: '3rem',
+                paddingInline: '1rem'
+            },
+            card:{
+                borderRadius: '.5rem',
+                backgroundColor: '#5cb85c'
+            },
+            h4:{
+                paddingLeft: '1rem',
+            }
+        }
         return (
-            <div className='footer'>
+            <div style={Style.footer}>
                 <Mobile>
-                    <Col > 
+                    <Col className='text-center'> 
                      <Accordion >
-                        <Card className='footer-card'>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="outline-warning" eventKey="0">
-                                <h5>About us</h5>
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="0">
-                            <Card.Body>
-                            <About/> 
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        <Card className='footer-card '>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="outline-warning" eventKey="1">
-                                <h5>Products</h5>
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="1">
-                            <Card.Body>
-                            <Product/>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        <Card className='footer-card '>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="outline-warning" eventKey="2">
-                                <h5>Supports</h5>
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="2">
-                            <Card.Body>
-                            <Support/>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        <Card className='footer-card '>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="outline-warning" eventKey="3">
-                                <h5>Learn</h5>
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="3">
-                            <Card.Body>
-                            <Learn/>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        <Card className='footer-card'>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="outline-warning" eventKey="4">
-                                <h5>Community</h5>
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="4">
-                            <Card.Body>
-                            <Community/>
-                            </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
+                        <AccordionCard ekey='0' title='About Us' content={<About/>}/>
+                        <AccordionCard ekey='1' title='Products' content={<Product/>}/>
+                        <AccordionCard ekey='2' title='Supports' content={<Support/>}/>
+                        <AccordionCard ekey='3' title='Learn' content={<Learn/>}/>
+                        <AccordionCard ekey='4' title='Community' content={<Community/>}/> 
                         </Accordion>
-                    </Col>
-                    
+                    </Col>    
                 </Mobile>
                 <Desktop>
                 <Row>
-                    <Col >
-                        <h4>About Us</h4>
-                        <About/>
-                    </Col>
-                    <Col>
-                        <h4>Products</h4>
-                        <Product/>
-                    </Col>
-                    <Col>
-                        <h4>Supports</h4>
-                        <Support/>
-                    </Col>
-                    <Col>
-                        <h4>Learn</h4>
-                        <Learn/>
-                    </Col>
-                    <Col>
-                        <h4>Community</h4>
-                        <Community/>
-                    </Col>
+                    <Col><h4 style={Style.h4}>About Us</h4><About/></Col>
+                    <Col><h4 style={Style.h4}>Products</h4><Product/></Col>
+                    <Col><h4 style={Style.h4}>Supports</h4><Support/></Col>
+                    <Col><h4 style={Style.h4}>Learn</h4><Learn/></Col>
+                    <Col><h4 style={Style.h4}>Community</h4><Community/></Col>
                 </Row>
-                
-
-                </Desktop>
-                
-                
+                </Desktop>    
             </div>
         )
     }

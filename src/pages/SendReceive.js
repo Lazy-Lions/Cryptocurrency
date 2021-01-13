@@ -10,28 +10,15 @@ export default class SendReceive extends Component {
         super();
         this.state = {
           showModal: false,
-          showSend: true
-        }
-      } 
-      componentDidMount(){
-        var targetUrl ='http://199.192.16.63/api/send_transaction/BTC'
-        fetch(targetUrl,{
-            method: 'POST',
-            headers: {
-                        'Content-Type': "application/json; charset=utf-8",
-            },
-            body: JSON.stringify({
+          showSend: true,
+          receiverId:"",
+          note:"",
+          amount:"",
+          currency:"",
+          cyptoId: "1EACExky8iZgNWmNGu1HWMJ4YtB4CSoCEP",
+          pkey:"a22f7e1a8c2a2926b6877ef5cbf3c496547ecef8cbbb777f9fc98c430fc4f6b3",
 
-                "fromAddress":"1EACExky8iZgNWmNGu1HWMJ4YtB4CSoCEP",
-                "pkey":"a22f7e1a8c2a2926b6877ef5cbf3c496547ecef8cbbb777f9fc98c430fc4f6b3",
-                "toAddress":"15kzPLY35v4pvaVHiiSAPzfm6kyg5gvv9n",
-                "amount":0.1,
-                "withFee":0
-            })
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err))
+        }
       }
       openModal =()=> {
         this.setState({ showModal: true });
@@ -45,6 +32,31 @@ export default class SendReceive extends Component {
       openReceive =()=> {
         this.setState({ showSend: false});
       }
+      sendHandler =()=> {
+        var targetUrl ='http://199.192.16.63/api/send_transaction/BTC'
+        fetch(targetUrl,{
+            method: 'POST',
+            headers: {
+                        'Content-Type': "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+
+                "fromAddress":this.state.cyptoId,
+                "pkey":this.state.pkey,
+                "toAddress":this.state.receiverId,
+                "amount":this.state.amount,
+                "withFee":0
+            })
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err)) 
+      }
+      handleChange=(e)=>{
+        this.setState({
+            [e.target.id]:e.target.value
+        })    
+    }
     render(){
       const CryptoOptions = [
         { key: '1', text: 'BTC', value: 'BTC' },
@@ -58,18 +70,21 @@ export default class SendReceive extends Component {
                 <Segment inverted className="segment centered">
                   <Form inverted >
                     
-                      <Form.Input fluid label='Receiver' placeholder='Crypto Id' />
-                      <Form.Input fluid label='Note' placeholder='Message' />
-                      <Form.Input fluid label='Amount' placeholder='Enter Amount' />
+                      <Form.Input fluid label='Receiver' id="receiverId" value={this.state.receiverId} placeholder='Crypto Id' onChange={this.handleChange}/>
+                      <Form.Input fluid label='Note' id="note" value={this.state.note} placeholder='Message' onChange={this.handleChange}/>
+                      <Form.Input fluid label='Amount' id="amount" value={this.state.amount} placeholder='Enter Amount' onChange={this.handleChange}/>
                       <Form.Field
                         fluid
+                        id="currency"
                         label={{ children: 'Currency'}}
                         control={Select}
                         options={CryptoOptions}
                         placeholder='BTC'
-                    />
+                        value={this.state.currency}
+                        onChange={this.handleChange}
+                      />
                     <div className="text-center">
-                    <Button type='submit' onClick={this.closeModal} variant='warning'>Continue</Button>
+                    <Button type='submit' onClick={()=>{this.closeModal(); this.sendHandler()}} variant='warning'>Continue</Button>
                     </div>
                    
                   </Form>
@@ -113,9 +128,9 @@ export default class SendReceive extends Component {
                 </Col>
                 </Row>
             </Nav>
-            <Modal.Body>
-               <SendReceive/>    
-            </Modal.Body>
+          <Modal.Body>
+              <SendReceive/>    
+          </Modal.Body>
             
       </Modal>
     </>

@@ -1,52 +1,11 @@
-
-.upper {
-  background-color: #0e1318;
-  color: #bebebe;
+**********************************************************************************************************************
+                                               /* Dashboard */                        
+**********************************************************************************************************************                                            
+.dashboardCard{
+    text-align: center;   
 }
-.card-container{
-  background-color: #00101f;
-  color: #bebebe;
-}
-.card:hover{
-  box-shadow: 6px 6px 8px rgb(0, 0, 26);
+.dashboardCard:hover{
   transform:scale(1.1);
-}
-.card{
-  background-color: #131722;
-  padding:2rem 0rem;
-  border-radius: 1rem;
-  border: 1px solid #5c5a5a;
-  text-align: center;
-  color: rgb(0, 0, 26);
-  transition:.5s;
-  margin: 1rem auto ;
-
-}
-.footer{
-  
-  background-color: #000014;
-  padding: 2rem;
-  
-}
-.footer-card{
-  
-  border-radius: .5rem;
-  background-color: #5cb85c;
-}
-h4{
-  padding-left: 1rem;
-}
-.footer-card:hover{
-  
-  box-shadow: 6px 6px 8px rgb(0, 0, 26);
-  transform:scale(1.001);
-}
-.register{
-  border-radius: 1rem;
-  margin: 0 20%;
-  padding: 2% 5%;
-  align-content: center;
-  
 }
 @media all and (min-width: 480px) {
   .Login {

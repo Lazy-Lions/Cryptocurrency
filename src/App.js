@@ -7,7 +7,6 @@ import Register from './pages/Register';
 import Settings from './pages/Settings';
 import Wallet from './pages/Wallet';
 import Profile from './pages/Profile';
-
 export default class App extends Component {
   constructor(){
     super()

@@ -1,9 +1,10 @@
-import React  from 'react'
+import React, {useState}  from 'react'
 import * as IoIcons from 'react-icons/io'
 import {Modal} from 'react-bootstrap'
 
 export default function Notification() {
-    const [lgShow, setLgShow] = React.useState(false);
+    const [lgShow, setLgShow] = useState(false);
+    
     return (
         <div>
                <IoIcons.IoMdNotificationsOutline size={30} onClick={() => setLgShow(true)}/>
