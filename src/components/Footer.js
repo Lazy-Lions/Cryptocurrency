@@ -9,53 +9,49 @@ export default class Footer extends Component {
         const Mobile = props => <Responsive {...props} maxWidth={991} />;
         const About =()=> {
             return(
-                <>
-                <Nav.Link as={Link} to="/about">About </Nav.Link>
-                <Nav.Link as={Link} to="/affiliates">Affiliate</Nav.Link>    
-                <Nav.Link as={Link} to="/terms">Terms</Nav.Link>
-                <Nav.Link as={Link} to="/announcements">Announcements</Nav.Link>
-                <Nav.Link as={Link} to="/privacy">Privacy</Nav.Link>
-                </>
+                <div >
+                <Nav.Link style={Style.navColor} as ={Link} to="/about" >About </Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/affiliates">Affiliate</Nav.Link>    
+                <Nav.Link style={Style.navColor} as ={Link} to="/terms">Terms</Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/announcement">Announcements</Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/privacy">Privacy</Nav.Link>
+                </div>
             )
         }
         const Product =()=> {
             return(
-                <>
-                <Nav.Link as={Link} to="/exchange">Exchange</Nav.Link>
-                <Nav.Link as={Link} to="/access">Access</Nav.Link>    
-                <Nav.Link as={Link} to="/trust_wallet">Trust Wallet</Nav.Link>
-                </>
+                <div>
+                <Nav.Link style={Style.navColor} as ={Link} to="/exchange">Exchange</Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/access">Access</Nav.Link>    
+                <Nav.Link style={Style.navColor} as ={Link} to="/trust-wallet">Trust Wallet</Nav.Link>
+                </div>
             )
         } 
         const Support =()=> {
             return(
-                <>
-                <Nav.Link as={Link} to="/feedback">Give Us Feedback</Nav.Link>
-                <Nav.Link as={Link} to="/support">Support Center</Nav.Link>
-                </>
+                <div>
+                <Nav.Link style={Style.navColor} as ={Link} to="/feedback">Give Us Feedback</Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/support">Support Center</Nav.Link>
+                </div>
             )
         }
         const Learn =()=> {
             return(
-                <>
-                <Nav.Link as={Link} to="/crypto-basic">What is Crypto?</Nav.Link>
-                <Nav.Link as={Link} to="/bitcoin-basic">What is Bitcoin</Nav.Link>
-                <Nav.Link as={Link} to="/blockchain-basic">What is Blockchain</Nav.Link>
-                <Nav.Link as={Link} to="/buy-bitcoin">Buy Bitcoin</Nav.Link>
-                <Nav.Link as={Link} to="/buy-ethereum">Buy Ethereum</Nav.Link>
-                <Nav.Link as={Link} to="/buy-ripple">Buy Ripple</Nav.Link>
-                <Nav.Link as={Link} to="/buy-litecoin">Buy Litecoin</Nav.Link>
-                </>
+                <div>
+                <Nav.Link style={Style.navColor} as ={Link} to="/crypto-basic">What is Crypto?</Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/bitcoin-basic">What is Bitcoin</Nav.Link>
+                <Nav.Link style={Style.navColor} as ={Link} to="/blockchain-basic">What is Blockchain</Nav.Link>
+                </div>
             )
         }
         const Community =()=> {
             return(
-                <>
-                <Nav.Link as={Link} to="/facebook.com">Facebook</Nav.Link>
-                <Nav.Link as={Link} to="/instagram.com">Instagram</Nav.Link>
-                <Nav.Link as={Link} to="/twitter.com">Twitter</Nav.Link>
-                <Nav.Link as={Link} to="/telegram.com">Telegram</Nav.Link>
-                </>
+                <div>
+                <Nav.Link style={Style.navColor} href="https://www.facebook.com">Facebook</Nav.Link>
+                <Nav.Link style={Style.navColor} href="https://www.instagram.com">Instagram</Nav.Link>
+                <Nav.Link style={Style.navColor} href="https://www.twitter.com">Twitter</Nav.Link>
+                <Nav.Link style={Style.navColor} href="https://www.telegram.com">Telegram</Nav.Link>
+                </div>
             )
         }
         const AccordionCard =(props)=>{
@@ -67,7 +63,7 @@ export default class Footer extends Component {
                                 </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey={props.ekey}>
-                                <Card.Body>
+                                <Card.Body >
                                     {props.content}
                                 </Card.Body>
                             </Accordion.Collapse>
@@ -83,10 +79,14 @@ export default class Footer extends Component {
             },
             card:{
                 borderRadius: '.5rem',
-                backgroundColor: '#5cb85c'
+                backgroundColor: '#5cb85c',
+                
             },
             h4:{
                 paddingLeft: '1rem',
+            },
+            navColor:{
+                color:'whitesmoke'
             }
         }
         return (

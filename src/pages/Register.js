@@ -1,15 +1,40 @@
 import React, { Component } from 'react'
 import { Form, Button } from "react-bootstrap";
+import { Header, Icon } from "semantic-ui-react";
+import bg from "../components/img/crypto.png";
+import Responsive from 'react-responsive';
+
 export default class Register extends Component {
     render() {
-        const Style={
-            borderRadius: '1rem',
-            margin: '0 20%',
-            padding: '2% 5%',
-            alignContent: 'center'
-        }
-        return (
-            <div style={Style}>
+        const RegisterForm=(props)=>{
+            const Style={
+                container:{
+                    paddingInline:props.padInline,
+                    paddingBlock:props.padBlock,
+                    alignContent: 'center',
+                    backgroundImage:`url(${bg})`,
+                    color:'olive',
+                    
+                },
+                header:{
+                    paddingBlock:'2rem'
+                },
+                element:{
+                    backgroundColor:'whitesmoke',
+                    paddingInline:props.elementPad,
+                    paddingBottom:'2rem',
+                    borderRadius:'1rem',
+                    boxShadow:'0 0 18px  #f5f5f5'
+                }
+                
+            }
+            return(
+                <div style={Style.container}>
+                <div style={Style.element}>
+                <Header as='h2' icon textAlign='center' color='olive' style={Style.header}>
+                    <Icon name='add user' color='olive' inverted/>
+                    <Header.Content>Create Account</Header.Content>
+                </Header>
                 <Form >
                     <Form.Group controlId="formFirstName">
                         <Form.Label>First Name</Form.Label>
@@ -34,8 +59,17 @@ export default class Register extends Component {
                     <Button variant="danger" type="submit" style={{paddingInline:'2rem'}}> Submit </Button> 
                     </div>
                     </Form>
-                    
+                </div>        
             </div>
+            )
+        }
+        const Desktop = props => <Responsive {...props} minWidth={992} />;
+        const Mobile = props => <Responsive {...props} maxWidth={991} />; 
+        return (
+            <>
+                <Desktop><RegisterForm padInline='15rem' padBlock='5rem' elementPad='3rem'/></Desktop>
+                <Mobile><RegisterForm padInline='3rem' padBlock='2rem' elementPad='1rem'/></Mobile>
+            </>            
         )
     }
 }

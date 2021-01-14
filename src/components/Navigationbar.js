@@ -23,7 +23,7 @@ export default class Navigationbar extends Component {
     render() {
         return (
             <div>
-                <Navbar fixed='top' collapseOnSelect expand="lg" bg="dark" variant="dark" >
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
                 <Navbar.Brand as={Link} to="/">Cryptocurrency</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -42,7 +42,7 @@ export default class Navigationbar extends Component {
                     </Modal>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/register">
-                    <Button variant="success" active>Register Now</Button>
+                    <Button variant="danger" active>Register Now</Button>
                     </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
