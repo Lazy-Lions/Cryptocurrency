@@ -1,26 +1,14 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import {Button, Nav, Navbar, Modal} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RegisterModal from './RegisterModal';
 import Login from "../pages/Login";
-export default class Navigationbar extends Component {
-    constructor () {
-        super();
-        this.state = {
-          showModal: false,
-          email:"",
-          password:""
-        }
-      } 
-     
-      openModal =()=> {
-        this.setState({ showModal: true });
-      }  
-      closeModal =()=> {
-        this.setState({ showModal: false });
-      }
-    render() {
+
+const Navigationbar =()=>{
+  const [show, setShow] = useState(false);
+  const openModal = () => setShow(true);
+  const closeModal = () => setShow(false);
         return (
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
@@ -33,21 +21,22 @@ export default class Navigationbar extends Component {
                     </Nav>
                     <Nav >
                     <Nav.Link >
-                    <Button variant="outline-warning" onClick={this.openModal}>Login</Button>
+                    <Button variant="outline-warning" onClick={openModal}>Login</Button>
                     <Modal
-                        show={this.state.showModal}
-                        onHide={this.closeModal}
+                        show={show}
+                        onHide={closeModal}
                     >
-                    <Login/>
+                    <Login modal={closeModal}/>
                     </Modal>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/register">
-                    <Button variant="danger" active>Register Now</Button>
+                    <Button variant="success" active>Register Now</Button>
                     </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>
             </div>
         )
-    }
+    
 }
+export default Navigationbar

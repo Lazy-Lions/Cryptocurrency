@@ -14,10 +14,10 @@ export default class AnotherNav extends Component {
         return (
           <>
           <Desktop>
-            <Navbar bg="danger" variant="dark">
+            <Navbar bg="secondary" variant="dark">
               <Navbar.Brand as={Link} to="/">Cryptocurrency</Navbar.Brand>
               <Nav className="mr-auto">
-                <Nav.Link as={Link} to="/trading-market">Trading Market</Nav.Link>
+                <Nav.Link as={Link} to="/trading">Trading Market</Nav.Link>
                 <Nav.Link as={Link} to="/wallet">Wallet</Nav.Link> 
                 <SendReceive/>
               </Nav>

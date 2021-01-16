@@ -1,8 +1,44 @@
-.dashboardCard{
-    text-align: center;   
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
 }
-.dashboardCard:hover{
-  transform:scale(1.1);
+.market {
+  box-sizing: border-box;
+  display: inherit;
+  padding-left: 1.25%;
+  background-color: #1a1a1c;
+  color: #fff;
+}
+.semi-headline {
+  color: grey;
+}
+
+.box-bg {
+  background-color: #262d47;
+  font-family: "Montserrat";
+}
+
+.box-bg-cb {
+  background-color: #262d47;
+  /* margin-right: 30px; */
+}
+.box-corner {
+  border-radius: 15px;
+}
+
+.ctc {
+  color: #fff;
+}
+
+.bg-list {
+  background-color: #131722;
+}
+
+.dashboardCard {
+  text-align: center;
+}
+.dashboardCard:hover {
+  transform: scale(1.1);
 }
 @media all and (min-width: 480px) {
   .Login {
@@ -14,12 +50,19 @@
     max-width: 320px;
   }
 }
-@media all and (max-width: 991px){
-  .fixPad { 
+@media all and (max-width: 991px) {
+  .fixPad {
     padding-top: 4rem;
     padding-bottom: 4rem;
   }
-  .topPad{
+  .topPad {
     padding-top: 3rem;
-  } 
-} 
+  }
+}
+
+.input-group:focus-within input {
+  color: white !important;
+}
+.input-group input {
+  color: white !important;
+}
