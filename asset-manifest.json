@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/Lazy-Sleepers/Cryptocurrency.git/static/css/main.de429842.chunk.css",
+    "main.js": "/Lazy-Sleepers/Cryptocurrency.git/static/js/main.065996d2.chunk.js",
+    "main.js.map": "/Lazy-Sleepers/Cryptocurrency.git/static/js/main.065996d2.chunk.js.map",
+    "runtime-main.js": "/Lazy-Sleepers/Cryptocurrency.git/static/js/runtime-main.cc3d761d.js",
+    "runtime-main.js.map": "/Lazy-Sleepers/Cryptocurrency.git/static/js/runtime-main.cc3d761d.js.map",
+    "static/css/2.537c933d.chunk.css": "/Lazy-Sleepers/Cryptocurrency.git/static/css/2.537c933d.chunk.css",
+    "static/js/2.202db4d8.chunk.js": "/Lazy-Sleepers/Cryptocurrency.git/static/js/2.202db4d8.chunk.js",
+    "static/js/2.202db4d8.chunk.js.map": "/Lazy-Sleepers/Cryptocurrency.git/static/js/2.202db4d8.chunk.js.map",
+    "index.html": "/Lazy-Sleepers/Cryptocurrency.git/index.html",
+    "static/css/2.537c933d.chunk.css.map": "/Lazy-Sleepers/Cryptocurrency.git/static/css/2.537c933d.chunk.css.map",
+    "static/css/main.de429842.chunk.css.map": "/Lazy-Sleepers/Cryptocurrency.git/static/css/main.de429842.chunk.css.map",
+    "static/js/2.202db4d8.chunk.js.LICENSE.txt": "/Lazy-Sleepers/Cryptocurrency.git/static/js/2.202db4d8.chunk.js.LICENSE.txt",
+    "static/media/Bellhop.716aee12.jpg": "/Lazy-Sleepers/Cryptocurrency.git/static/media/Bellhop.716aee12.jpg",
+    "static/media/Fardin.d94a90b6.jpg": "/Lazy-Sleepers/Cryptocurrency.git/static/media/Fardin.d94a90b6.jpg",
+    "static/media/bitcoin.c24022f7.png": "/Lazy-Sleepers/Cryptocurrency.git/static/media/bitcoin.c24022f7.png",
+    "static/media/semantic.min.css": "/Lazy-Sleepers/Cryptocurrency.git/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/crypto.a1bf7990.png": "/Lazy-Sleepers/Cryptocurrency.git/static/media/crypto.a1bf7990.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cc3d761d.js",
+    "static/css/2.537c933d.chunk.css",
+    "static/js/2.202db4d8.chunk.js",
+    "static/css/main.de429842.chunk.css",
+    "static/js/main.065996d2.chunk.js"
+  ]
+}
