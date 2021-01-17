@@ -19,7 +19,8 @@ export default function RegisterModal() {
             show={show}
             onHide={() => setShow(false)}
             dialogClassName="modal-90w"
-            aria-labelledby="register-modal"
+            aria-labelledby="contained-modal-title-vcenter"
+                        centered
         >
             <Modal.Header closeButton>
             <Modal.Title id="register-modal">

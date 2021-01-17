@@ -58,7 +58,7 @@ export default class Footer extends Component {
             return(
                 <Card style={Style.card}>
                             <Card.Header>
-                                <Accordion.Toggle as={Button} variant="outline-warning" eventKey={props.ekey}>
+                                <Accordion.Toggle as={Button} style={Style.button} variant="outline-warning" eventKey={props.ekey}>
                                     <h5>{props.title}</h5>
                                 </Accordion.Toggle>
                             </Card.Header>
@@ -87,6 +87,10 @@ export default class Footer extends Component {
             },
             navColor:{
                 color:'whitesmoke'
+            },
+            button:{
+                width:'8rem',
+                height:'3rem'
             }
         }
         return (

@@ -25,6 +25,8 @@ const Navigationbar =()=>{
                     <Modal
                         show={show}
                         onHide={closeModal}
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
                     >
                     <Login modal={closeModal}/>
                     </Modal>
