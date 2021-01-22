@@ -11,6 +11,12 @@ export default class Profile extends Component {
     constructor(props) {
         super(props);
         this.state={
+            Fname:'',
+            Lname:'',
+            btcp:'',
+            ethp:'',
+            bchp:'',
+            ltcp:'',
             image:'',
             url:'',
             Progress:0,
@@ -49,9 +55,21 @@ export default class Profile extends Component {
         var id=fire.auth().currentUser.uid  
           firebase.database().ref(`User_Images/${id}/images`).once('value').then((snapshot)=>{
             this.setState({url:snapshot.val() && snapshot.val().Image})
+
+          })
+          firebase.database().ref('User_Info/'+id).once('value').then((snapshot)=>{
+            this.setState({Fname:snapshot.val() && snapshot.val().Firstname})
+            this.setState({Lname:snapshot.val() && snapshot.val().Lastname})
+          })
+          firebase.database().ref('Currency_Info/'+id).once('value').then((snapshot)=>{
+            this.setState({btcp:snapshot.val() && snapshot.val().BtcPublic})
+            this.setState({ethp:snapshot.val() && snapshot.val().EthPublic})
+            this.setState({bchp:snapshot.val() && snapshot.val().BchPublic})
+            this.setState({ltcp:snapshot.val() && snapshot.val().LtcPublic})     
           })
     }
     render() {
+        const {Fname, Lname, btcp, ethp, bchp, ltcp, image}=this.state
         const SparkCard =(props)=>{
             return(
                 <Grid.Column>
@@ -86,10 +104,17 @@ export default class Profile extends Component {
                     <Button onClick={this.handleUpload}>Upload</Button>
                 </Grid.Column>
                 <Grid.Column width={13} style={{margin:'2rem'}}>
-                    <Card.Group>
-                        <Card fluid color='yellow' header='Fardin Islam'/>
-                        <Card fluid color='yellow' header='CRZ3476534567353'/>
-                    </Card.Group>
+                <Card fluid style={{backgroundColor:'#f0f4c3'}}>
+                    <Card.Content>
+                        <Card.Header><h1 style={{color:"maroon"}}>{Fname}  {Lname}</h1></Card.Header>
+                        <Card.Description>
+                        <p style={{color:'orange'}}>BTC : {btcp}</p>
+                        <p style={{color:'blue'}}>ETH : {ethp}</p>
+                        <p style={{color:'grey'}}>BCH : {bchp}</p>
+                        <p style={{color:'green'}}>LTC : {ltcp}</p>
+                        </Card.Description>
+                    </Card.Content>
+                </Card>
                 </Grid.Column>
                 </Grid.Row>
                 <Grid columns={4} stackable divided  >
