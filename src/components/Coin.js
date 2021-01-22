@@ -1,11 +1,15 @@
 import React from "react";
 import "../App.css";
-import {  Card, ListGroup, Row } from "react-bootstrap";
+import { Card, ListGroup, Row } from "react-bootstrap";
 import FourTopperChart from "../components/FourTopperChart";
 import { Link } from "react-router-dom";
 import { MdTrendingUp, MdTrendingDown } from "react-icons/md";
+// "#131722"
 
-const backColor = { backgroundColor: "#131722" };
+const backColorbtc = { backgroundColor: "orange" };
+const backColoreth = { backgroundColor: "#adb4db" };
+const backColorltc = { backgroundColor: "#c4bebe" };
+const backColorbch = { backgroundColor: "#0ac18e" };
 
 const MySpan = ({ color, elem }) => {
   return <span style={{ color: color }}>{elem}</span>;
@@ -23,64 +27,81 @@ const Coin = ({
   highPeek,
   lowPeek,
 }) => {
+  const headerColor =
+    symbol === "btc"
+      ? "grad_color_btc"
+      : symbol === "eth"
+      ? "grad_color_eth"
+      : symbol === "ltc"
+      ? "grad_color_ltc"
+      : "grad_color_bch";
+
+  const bodyColor =
+    symbol === "btc"
+      ? backColorbtc
+      : symbol === "eth"
+      ? backColoreth
+      : symbol === "ltc"
+      ? backColorltc
+      : backColorbch;
   return (
     <Card>
       <Card.Img
         variant="bottom"
         src={image}
-        className="bg-dark"
+        className={headerColor}
         style={{
           paddingTop: 10,
           paddingBottom: 10,
           // paddingLeft: 170,
           objectFit: "contain",
+
           // paddingRight: 170,
         }}
         height={120}
         width={100}
       />
-      <Card.Body className="bg-list ctc">
-        <Card.Title
-          className="bg-list text-center ctc"
-          style={{ fontSize: 30 }}
-        >
-          {" "}
+      <Card.Body style={bodyColor}>
+        <Card.Title className="bg-list text-center ctc" style={bodyColor}>
           {name}
         </Card.Title>
         <Card.Text>
           <FourTopperChart name={symbol} />
           <ListGroup variant="flush">
-            <ListGroup.Item style={backColor}>
-              <MySpan color="#a8a8a8" elem="Current Price : " />
+            <ListGroup.Item style={bodyColor}>
+              <MySpan color="#000" elem="Current Price : " />
               {price.toLocaleString()} <MySpan color="#80d8ff" elem="$" />
             </ListGroup.Item>
-            <ListGroup.Item style={backColor}>
-              <MySpan color="#a8a8a8" elem="Market Capital : " />
+            <ListGroup.Item style={bodyColor}>
+              <MySpan color="#000" elem="Market Capital : " />
               {volume.toLocaleString()} <MySpan color="#80d8ff" elem="$" />
             </ListGroup.Item>
             <ListGroup.Item
               style={{
-                ...backColor,
-                ...{ color: priceChange < 0 ? "#ff1744" : "#00c853" },
+                ...bodyColor,
+                ...{
+                  color: priceChange < 0 ? "#ff1744" : "#00c853",
+                  fontWeight: "bold",
+                },
               }}
             >
-              <MySpan color="#a8a8a8" elem="Percentage (24) : " />
+              <MySpan color="#000" elem="Percentage (24) : " />
               {priceChange.toFixed(2)}%
             </ListGroup.Item>
 
-            <ListGroup.Item style={backColor}>
-              <MySpan color="#a8a8a8" elem="Total Volume : " />
+            <ListGroup.Item style={bodyColor}>
+              <MySpan color="#000" elem="Total Volume : " />
               {marketcap.toLocaleString()}
               <MySpan color="#80d8ff" elem=" $" />
             </ListGroup.Item>
 
-            <ListGroup.Item style={backColor}>
-              <MySpan color="#a8a8a8" elem="Highest and Lowest Peek (24 H): " />
+            <ListGroup.Item style={bodyColor}>
+              <MySpan color="#000" elem="Highest and Lowest Peek (24 H): " />
               <br />
               <Row
                 className="d-flex justify-content-between"
                 style={{
-                  ...backColor,
+                  bodyColor,
                   ...{ paddingRight: 10, padddingLeft: 10, margin: 2 },
                 }}
               >
@@ -102,11 +123,11 @@ const Coin = ({
                 </div>
               </Row>
             </ListGroup.Item>
-            <ListGroup.Item style={backColor}>
+            <ListGroup.Item style={bodyColor}>
               <Link
                 to={`/details/${symbol}`}
                 sym={symbol}
-                className="btn btn-info form form-control"
+                className="btn btn-outline-danger form form-control"
               >
                 Details
               </Link>

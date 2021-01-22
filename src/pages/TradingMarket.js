@@ -7,7 +7,6 @@ import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 function MyList() {
     const [coins, setCoins] = useState([]);
-    const [search, setSearch] = useState("");
   
     useEffect(() => {
       axios
@@ -21,10 +20,6 @@ function MyList() {
         .catch((error) => console.log(error));
     }, []);
   
-    const handleChange = (e) => {
-      setSearch(e.target.value);
-    };
-  
     const filter1 = coins.filter(
       (coin) =>
         coin.symbol === "btc" ||
@@ -34,7 +29,7 @@ function MyList() {
     );
   
     const filteredCoins = filter1.filter((coin) =>
-      coin.name.toLowerCase().includes(search.toLowerCase())
+      coin.name.toLowerCase()
     );
   
     return (
@@ -114,7 +109,8 @@ function MyList() {
         margin: 0,
         paddingBottom: "5rem",
         fontFamily: "Montserrat",
-        backgroundColor: "#1a1a1c",
+        background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+                backgroundColor: "#585e81",
         color: "#fff",
       }}
     >

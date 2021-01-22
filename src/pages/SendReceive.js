@@ -1,139 +1,153 @@
-import React,{Component} from 'react'
-import {Button, Modal, Nav, Row, Col} from "react-bootstrap";
-import {Select, Form, Segment,Input,Container, Divider} from 'semantic-ui-react'
+import React,{useEffect, useState} from 'react'
+import firebase from 'firebase';
+import "firebase/auth";
+import fire from "../components/config/fire";
+import { Button, Modal, Nav} from "react-bootstrap";
+import { Form, Segment,Input, Grid, Divider, Header, Icon } from 'semantic-ui-react'
 import Responsive from 'react-responsive';
 import * as CgIcons from 'react-icons/cg'
 import QRCode from "react-qr-code";
+import { useRecoilState} from "recoil";
+import { btcprivate, btcpublic, ethpublic, ethprivate, bchpublic, bchprivate, ltcpublic, ltcprivate} from './Register';
+import axios from "axios";
 
-export default class SendReceive extends Component {
-    constructor () {
-        super();
-        this.state = {
-          showModal: false,
-          showSend: true,
-          receiverId:"",
-          note:"",
-          amount:"",
-          currency:"",
-          cyptoId: "1EACExky8iZgNWmNGu1HWMJ4YtB4CSoCEP",
-          pkey:"a22f7e1a8c2a2926b6877ef5cbf3c496547ecef8cbbb777f9fc98c430fc4f6b3",
+const SendReceive =()=> {
+  const [btcp, setBtcpublic] = useRecoilState(btcpublic)
+  const [btcpr, setBtcprivate] = useRecoilState(btcprivate)
+  const [ethp, setEthpublic] = useRecoilState(ethpublic)
+  const [ethpr, setEthprivate] = useRecoilState(ethprivate)
+  const [bchp, setBchpublic] = useRecoilState(bchpublic)
+  const [bchpr, setBchprivate] = useRecoilState(bchprivate)
+  const [ltcp, setLtcpublic] = useRecoilState(ltcpublic)
+  const [ltcpr, setLtcprivate] = useRecoilState(ltcprivate)
+  const [text, setText] = useState('')
+  const [coin, setCoin] = useState('')
+  const [show, setShow] = useState(false) 
+  const [receiver, setReceiver] = useState('')
+  const [amount, setAmount] = useState('') 
+  const [fee, setFee] = useState('')       
+  const sendHandler =()=> {
 
-        }
-      }
-      openModal =()=> {
-        this.setState({ showModal: true });
+        const btcparameter = {"fromAddress":btcp,
+                            "pkey":btcpr,
+                            "toAddress":receiver,
+                            "amount":amount,
+                            "withFee": fee
+                           };
+        const ethparameter = {"fromAddress":ethp,
+                            "pkey":ethpr,
+                            "toAddress":receiver,
+                            "amount":amount,
+                            "withFee": fee
+                          };
+        const bchparameter = {"fromAddress":bchp,
+                            "pkey":bchpr,
+                            "toAddress":receiver,
+                            "amount":amount,
+                            "withFee": fee
+                          };  
+        const ltcparameter = {"fromAddress":ltcp,
+                            "pkey":ltcpr,
+                            "toAddress":receiver,
+                            "amount":amount,
+                            "withFee": fee
+                          };
+                        
+        axios.post(`http://199.192.16.63/api/send_transaction/${coin}`,(coin ==='BTC')?  btcparameter
+        :(coin ==='ETH')? ethparameter:(coin ==='BCH')? bchparameter :(coin ==='LTC')? ltcparameter :null)
+                      .then(res => console.log(res))
+                      .catch(err=>console.log(err)) 
+                
       }  
-      closeModal =()=> {
-        this.setState({ showModal: false });
-      }
-      openSend =()=> {
-        this.setState({ showSend: true});
-      }
-      openReceive =()=> {
-        this.setState({ showSend: false});
-      }
-      sendHandler =()=> {
-        var targetUrl ='http://199.192.16.63/api/send_transaction/BTC'
-        fetch(targetUrl,{
-            method: 'POST',
-            headers: {
-                        'Content-Type': "application/json; charset=utf-8",
-            },
-            body: JSON.stringify({
-
-                "fromAddress":this.state.cyptoId,
-                "pkey":this.state.pkey,
-                "toAddress":this.state.receiverId,
-                "amount":this.state.amount,
-                "withFee":0
-            })
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err)) 
-      }
-      handleChange=(e)=>{
-        this.setState({
-            [e.target.id]:e.target.value
-        })    
-    }
-    render(){
-      const CryptoOptions = [
-        { key: '1', text: 'BTC', value: 'BTC' },
-        { key: '2', text: 'ETH', value: 'ETH' },
-        { key: '3', text: 'BCH', value: 'BCH' },
-        { key: '4', text: 'LTC', value: 'LTC' },
-      ]   
-        const SendReceive =()=>{
-            return(
-                (this.state.showSend)?
-                <Segment inverted className="segment centered">
-                  <Form inverted >
-                    
-                      <Form.Input fluid label='Receiver' id="receiverId" value={this.state.receiverId} placeholder='Crypto Id' onChange={this.handleChange}/>
-                      <Form.Input fluid label='Note' id="note" value={this.state.note} placeholder='Message' onChange={this.handleChange}/>
-                      <Form.Input fluid label='Amount' id="amount" value={this.state.amount} placeholder='Enter Amount' onChange={this.handleChange}/>
-                      <Form.Field
-                        fluid
-                        id="currency"
-                        label={{ children: 'Currency'}}
-                        control={Select}
-                        options={CryptoOptions}
-                        placeholder='BTC'
-                        value={this.state.currency}
-                        onChange={this.handleChange}
-                      />
-                    <div className="text-center">
-                    <Button type='submit' onClick={()=>{this.closeModal(); this.sendHandler()}} variant='warning'>Continue</Button>
-                    </div>
-                   
-                  </Form>
-                  </Segment >
-            :
-            <Container textAlign='center'>
-              <Segment inverted> 
-              <QRCode value="CRZ3476534567353"/>
-              <Divider horizontal>Or</Divider>
-              <Input
-                label= 'Crypto Id'
-                defaultValue='CRZ3476534567353'
-              /> 
-              </Segment>
-            </Container>
-            )
-        }   
-        
-        const Desktop = props => <Responsive {...props} minWidth={992} />;
-        const Mobile = props => <Responsive {...props} maxWidth={991} />; 
+      useEffect(() => {
+        var id=fire.auth().currentUser.uid   
+        firebase.database().ref('Currency_Info/'+id).once('value').then((snapshot)=>{
+          setBtcpublic(snapshot.val() && snapshot.val().BtcPublic)
+          setBtcprivate(snapshot.val() && snapshot.val().BtcPrivate)
+          setEthpublic(snapshot.val() && snapshot.val().EthPublic)
+          setEthprivate(snapshot.val() && snapshot.val().EthPrivate)
+          setBchpublic(snapshot.val() && snapshot.val().BchPublic)
+          setBchprivate(snapshot.val() && snapshot.val().BchPrivate)
+          setLtcpublic(snapshot.val() && snapshot.val().LtcPublic)
+          setLtcprivate(snapshot.val() && snapshot.val().LtcPrivate)
+      })
+      }, [setBtcpublic, setBtcprivate, setEthpublic, setEthprivate, setBchpublic, setBchprivate, setLtcpublic, setLtcprivate])
+      const Desktop = props => <Responsive {...props} minWidth={992} />;
+      const Mobile = props => <Responsive {...props} maxWidth={991} />; 
       return (
         <>
         <Desktop>
-        <Nav.Link onClick={this.openModal}>Send/Receive</Nav.Link>             
+        <Nav.Link onClick={()=>setShow(true)}>Send/Receive</Nav.Link>             
         </Desktop>
         <Mobile>
-        <Nav.Link><CgIcons.CgAddR size={30} onClick={this.openModal}/></Nav.Link> 
+        <Nav.Link><CgIcons.CgAddR size={30} onClick={()=>setShow(true)}/></Nav.Link> 
         </Mobile>
         
         <Modal
-            show={this.state.showModal}
-            onHide={this.closeModal}
+            size="lg"
+            show={show}
+            onHide={()=>setShow(false)}
         >
-            <Nav  variant="tabs">
-                <Row className="justify-content-md-center">
-                <Col xs={6} className="text-center">
-                    <Nav.Link onClick={this.openSend}>Send</Nav.Link>
-                </Col>
-                <Col xs={6} className="text-center">
-                    <Nav.Link onClick={this.openReceive}>Receive</Nav.Link>
-                </Col>
-                </Row>
-            </Nav>
-          <Modal.Body>
-              <SendReceive/>    
+            
+          <Modal.Body style={{backgroundColor:'#f0f4c3'}}>
+            <Segment placeholder style={{backgroundColor:'#f0f4c3'}}>
+            <Grid columns={2} relaxed='very'centered stackable>
+            <Grid.Column verticalAlign='middle'>
+            <Header as='h3' color='orange'><Icon  name='send' /> Send </Header>
+            <Form onSubmit={sendHandler} className='text-left'>
+                <Form.Input fluid label='Receiver' value={receiver} placeholder='Crypto Id' onChange={(e)=>setReceiver(e.target.value)}/>
+                <Form.Input fluid label='Amount' value={amount} placeholder='Enter Amount' onChange={(e)=>setAmount(e.target.value)}/>
+                <Form.Input fluid label='With Fee' value={fee} placeholder='with fee' onChange={(e)=>setFee(e.target.value)}/>  
+                <Form.Field fluid><label>Currency</label>
+                        <select 
+                            value={coin}
+                            style={{height:'3rem'}}
+                            onChange={(e) => setCoin(e.target.value)}
+                        >
+                            <option value='Select Currency' >----</option>
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                            <option value="BCH">BCH</option>
+                            <option value="LTC">LTC</option>
+                        </select>
+                      </Form.Field>
+              <div className="text-center">
+              <Button type='submit' variant='warning'>Continue</Button>
+              </div>
+              
+                  </Form>
+                </Grid.Column>
+
+                <Grid.Column verticalAlign='middle' textAlign='center'>
+                <Header as='h3' inverted color='orange'><Icon  name='download' /> Receive </Header>
+                      <QRCode value={text} />
+                      <Divider horizontal>Or</Divider>
+                      <div className="text-center">
+                      <Input style={{height:'3rem', marginInline:'0.5rem'}} icon='id card outline' iconPosition='left' value={text} />
+                         <select 
+                            value={text}
+                            style={{height:'3rem'}}
+                            onChange={(e) => setText(e.target.value)}
+                        >
+                            <option value='Select Currency' >----</option>
+                            <option value={btcp}>BTC</option>
+                            <option value={ethp}>ETH</option>
+                            <option value={bchp}>BCH</option>
+                            <option value={ltcp}>LTC</option>
+                        </select> 
+                      </div>
+                </Grid.Column>
+              </Grid>
+              <Desktop>
+              <Divider vertical>Or</Divider>
+              </Desktop>
+              
+            </Segment>
           </Modal.Body>
             
       </Modal>
     </>
     )
   }
-}
+
+export default SendReceive

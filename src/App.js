@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect} from 'react';
+import "firebase/auth";
+import fire from "./components/config/fire";
 import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom';
 import Navigationbar from "./components/Navigationbar";
 import AnotherNav from "./components/AnotherNav";
@@ -8,14 +10,25 @@ import Settings from './pages/Settings';
 import MyWallet from "./pages/MyWallet";
 import Profile from './pages/Profile';
 import {TradingMarket, DetailsChart} from './pages/TradingMarket'
+import { atom, useSetRecoilState, useRecoilValue} from "recoil";
 import {About, Affiliate, Terms,Announcement, Privacy, Access, TrustWallet, Crypto, Blockchain, Bitcoin, Exchange} from './pages/FooterElement';
-import { loginState } from "./pages/Login";
-import { useRecoilValue } from "recoil";
 
+  export const userState = atom({
+    key:'userState',
+    default: false
+  })
 const App =()=>{
-  const login=useRecoilValue(loginState) 
+  const setUser = useSetRecoilState(userState)
+  const user = useRecoilValue(userState)
+  useEffect(() => {
+      fire.auth().onAuthStateChanged((user)=>{
+        (user)?setUser(true):setUser(false)
+          }  
+        )
+    }, [user, setUser])
+ 
     return (
-      !login?
+      !user?
         <Router>
         <Navigationbar />
         <Switch>

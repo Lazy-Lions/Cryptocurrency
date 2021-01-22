@@ -11,8 +11,8 @@ const panes = [
   { menuItem: 'Security', render: () => <Tab.Pane><Security/></Tab.Pane> },
 ]
 const Password = () => (
-  <Segment inverted basic textAlign={"center"}>
-    <Form inverted>
+  <Segment style={{backgroundColor:'#f0f4c3'}} basic textAlign={"center"}>
+    <Form >
       <Form.Group widths='equal'>
         <Form.Input fluid label='Old Password' placeholder='Old Password' />
         <Form.Input fluid label='New Password' placeholder='New Password' />
@@ -22,8 +22,8 @@ const Password = () => (
   </Segment>
 )
 const Security = () => (
-  <Segment inverted>
-    <Divider horizontal inverted>
+  <Segment style={{backgroundColor:'#f0f4c3'}}>
+    <Divider horizontal >
     <h1>2-Step Verification</h1> 
     </Divider>
     <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />

@@ -74,7 +74,6 @@ export default class LeftAssetApiData extends Component {
     super();
     this.state = {
       coins: [],
-      search: "",
     };
   }
   apiCall = () => {
@@ -97,9 +96,6 @@ export default class LeftAssetApiData extends Component {
     clearInterval(this.interval);
   }
 
-  handleChange = (e) => {
-    this.setState({ search: e.target.value });
-  };
 
   render() {
     const filter1 = this.state.coins.filter(
@@ -111,7 +107,7 @@ export default class LeftAssetApiData extends Component {
     );
 
     const filteredCoins = filter1.filter((coin) =>
-      coin.name.toLowerCase().includes(this.state.search.toLowerCase())
+      coin.name.toLowerCase()
     );
     return (
       <>
@@ -121,7 +117,8 @@ export default class LeftAssetApiData extends Component {
               className="ui very basic"
               style={{
                 color: "white",
-                backgroundColor: "#262D47",
+                background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+                backgroundColor: "#585e81",
                 border: "none",
                 padding: 15,
               }}
@@ -160,10 +157,16 @@ export default class LeftAssetApiData extends Component {
           </Grid.Column>
         </Desktop>
         <Mobile>
-          <Segment style={{ backgroundColor: "#262d47", color: "white" }}>
+          <Segment style={{ 
+                background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+                backgroundColor: "#585e81",
+                color: "white" }}>
             <Tbl
               responsive
-              style={{ backgroundColor: "#262d47", color: "white" }}
+              style={{ 
+                background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+                backgroundColor: "#585e81",
+                color: "white" }}
             >
               <thead>
                 <tr>

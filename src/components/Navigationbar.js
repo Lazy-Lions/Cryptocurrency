@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
-import {Button, Nav, Navbar, Modal} from 'react-bootstrap';
+import {Button, Nav, Navbar} from 'react-bootstrap';
+import { Modal } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RegisterModal from './RegisterModal';
-import Login from "../pages/Login";
+import {Login, ForgotPassword} from "../pages/Login";
 
 const Navigationbar =()=>{
-  const [show, setShow] = useState(false);
-  const openModal = () => setShow(true);
-  const closeModal = () => setShow(false);
+    const Style={
+        textAlign:"center",
+        cursor:'pointer',
+        fontWeight:'900',
+        color:'blue'
+    }
+  const [firstOpen, setFirstOpen] = useState(false)
+  const [secondOpen, setSecondOpen] = useState(false)
         return (
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
@@ -21,14 +27,36 @@ const Navigationbar =()=>{
                     </Nav>
                     <Nav >
                     <Nav.Link >
-                    <Button variant="outline-warning" onClick={openModal}>Login</Button>
+                    <Button variant="outline-warning" onClick={() => setFirstOpen(true)}>Login</Button>
                     <Modal
-                        show={show}
-                        onHide={closeModal}
-                        aria-labelledby="contained-modal-title-vcenter"
+                        onClose={() => setFirstOpen(false)}
+                        onOpen={() => setFirstOpen(true)}
+                        open={firstOpen}
+                        size='tiny'
                         centered
+                        style={{height: 'fit-content'}}
                     >
-                    <Login modal={closeModal}/>
+                        <Modal.Content><Login modaal={() => setFirstOpen(false)}/></Modal.Content>  
+                    
+                    <Modal.Actions>
+                    <p style={Style} onClick={() => setSecondOpen(true)} >Forgot Password?</p>
+                    </Modal.Actions>
+                        <Modal
+                        onClose={() => setSecondOpen(false)}
+                        open={secondOpen}
+                        size='mini'
+                        style={{height: 'fit-content'}}
+                        centered
+                        >
+                        <Modal.Content><ForgotPassword/></Modal.Content>    
+                        <Modal.Actions>
+                        <Button
+                        icon='check'
+                        content='All Done'
+                        onClick={() => setSecondOpen(false)}
+                        />
+                        </Modal.Actions>
+                        </Modal>
                     </Modal>
                     </Nav.Link>
                     <Nav.Link as={Link} to="/register">

@@ -2,13 +2,30 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
-.market {
+.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ui.modal,
+.ui.active.modal {
+  margin: 0 auto!important;
+  bottom: auto!important;
+  left: auto!important;
+  right: auto!important;
+  top: auto!important;
+  transform-origin: center !important;
+  transition: all ease .5s;
+}
+
+.market { 
   box-sizing: border-box;
   display: inherit;
   padding-left: 1.25%;
   background-color: #1a1a1c;
   color: #fff;
 }
+
 .semi-headline {
   color: grey;
 }
@@ -59,10 +76,36 @@
     padding-top: 3rem;
   }
 }
+.card_body {
+  color: transparent;
+}
 
+.card_body:hover {
+  transform: rotate(-2deg) translate(5px, -5px);
+}
+.grad_color_btc {
+  background: linear-gradient(rgba(250, 0, 0, 0.5), transparent);
+  background-color: orange;
+}
+.grad_color_eth {
+  background: linear-gradient(rgba(70, 64, 75, 0.5), transparent);
+  background-color: #adb4db;
+}
+.grad_color_ltc {
+  background: linear-gradient(rgba(120, 120, 124, 0.5), transparent);
+  background-color: #c4bebe;
+}
+.grad_color_bch {
+  background: linear-gradient(rgba(2, 36, 19, 0.5), transparent);
+  background-color: #0ac18e;
+}
 .input-group:focus-within input {
-  color: white !important;
+  color: black !important;
+  
 }
 .input-group input {
-  color: white !important;
+  color: black !important;
 }
+.example{
+  position:absolute !important;
+  }

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class FourTopperChart extends React.PureComponent {
+export default class Newchart extends React.PureComponent {
   constructor(props) {
     super(props);
     this._ref = React.createRef();
@@ -8,21 +8,29 @@ export default class FourTopperChart extends React.PureComponent {
   componentDidMount() {
     const script = document.createElement("script");
     script.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-tickers.js";
+      "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
     script.async = true;
     script.innerHTML = JSON.stringify({
-      symbols: [
-        
-        {
-          description: (this.props.name==='btc')?"BTC":(this.props.name==='eth')?"ETH":(this.props.name==='ltc')?"LTC":"BCH",
-          proName: (this.props.name==='btc')? "COINBASE:BTCUSD":(this.props.name==='eth')?"COINBASE:ETHUSD":(this.props.name==='ltc')?"COINBASE:LTCUSD":"COINBASE:BCHUSD",
-        },
-      ],
+      symbol:
+        this.props.name === "btc"
+          ? "COINBASE:BTCUSD"
+          : this.props.name === "eth"
+          ? "COINBASE:ETHUSD"
+          : this.props.name === "ltc"
+          ? "COINBASE:LTCUSD"
+          : "COINBASE:BCHUSD",
       showSymbolLogo: true,
-      colorTheme: "dark",
+      // colorTheme: "red",
+      // color: "red",
       isTransparent: true,
+      dateRange: "1D",
+      colorTheme: "light",
+      trendLineColor: "#37a6ef",
+      underLineColor: "#FFECB3",
+      width: 200,
+      height: 150,
+
       locale: "en",
-      width: 80,
     });
     this._ref.current.appendChild(script);
     // document.getElementsByTagName("a").removeAttribute("href");

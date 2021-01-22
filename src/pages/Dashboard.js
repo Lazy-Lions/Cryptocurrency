@@ -13,14 +13,64 @@ import {
 } from "semantic-ui-react";
 import Responsive from "react-responsive";
 import Footer from "../components/Footer";
-import FourTopperChart from "../components/FourTopperChart";
 import { Parallax } from "react-parallax";
 import BgImage from "../components/img/bitcoin.png";
-import { loginState } from "./Login";
+import { userState } from "../App";
 import { useRecoilValue } from "recoil";
 
+class CurrencyChart extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this._ref = React.createRef();
+  }
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.src =
+      "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      symbol:
+        this.props.name === "btc"
+          ? "COINBASE:BTCUSD"
+          : this.props.name === "eth"
+          ? "COINBASE:ETHUSD"
+          : this.props.name === "ltc"
+          ? "COINBASE:LTCUSD"
+          : "COINBASE:BCHUSD",
+      showSymbolLogo: true,
+      // colorTheme: "red",
+      // color: "red",
+      isTransparent: true,
+      dateRange: "1D",
+      colorTheme: "light",
+      trendLineColor: "#37a6ef",
+      underLineColor: "#FFECB3",
+      width: 200,
+      height: 150,
+
+      locale: "en",
+    });
+    this._ref.current.appendChild(script);
+    // document.getElementsByTagName("a").removeAttribute("href");
+  }
+  render() {
+    return (
+      <div
+        class="tradingview-widget-containe container"
+        ref={this._ref}
+        // style={{ width: "600px" }}
+        style={{ pointerEvents: "none", cursor: "default" }}
+      >
+        <div
+          class="tradingview-widget-container__widget"
+          style={{ pointerEvents: "none", cursor: "default" }}
+        ></div>
+      </div>
+    );
+  }
+}
 const Dashboard =()=>{
-  const login=useRecoilValue(loginState)
+  const user = useRecoilValue(userState)
   const [width, setWidth] = useState(window.innerWidth)
   const updateDimensions = () => setWidth(window.innerWidth)
   useEffect(() => {
@@ -53,7 +103,7 @@ const Dashboard =()=>{
       return (
         <Grid.Column  mobile={16} tablet={8} computer={4}>
           <Segment className="dashboardCard" style={Style.card}>
-            <FourTopperChart name={props.currencyName} />
+            <CurrencyChart name={props.currencyName} />
           </Segment>
         </Grid.Column>
       );
@@ -61,11 +111,11 @@ const Dashboard =()=>{
     const ContactForm = (props) => {
       const Style = {
         container: {
-          backgroundColor: "#00101f",
+          backgroundColor: "#b3e5fc",
           paddingBlock: "5rem",
         },
         body: {
-          backgroundColor: "#000018",
+          backgroundColor: "#fff",
           marginInline: props.bodyMargin,
           paddingBlock: "2rem",
           color: "whitesmoke",
@@ -93,18 +143,18 @@ const Dashboard =()=>{
         <div style={Style.container}>
           <div>
             <Form style={Style.body}>
-              <Header as="h1" inverted>
+              <Header as="h1">
                 Contact us
               </Header>
               <Form.Group inline style={Style.nameGroup} widths='equal' stackable>
                 <Form.Field >
                   <label>
-                    <Icon inverted name="user" size="big" />
+                    <Icon  name="user" size="big" color='grey' />
                   </label>
                   <Input
                     placeholder="First name"
                     style={Style.fname}
-                    className="input-group"
+                    className="input-group "
                     transparent
                   />
                 </Form.Field>
@@ -119,7 +169,7 @@ const Dashboard =()=>{
               </Form.Group>
               <Form.Field inline>
                 <label>
-                  <Icon inverted name="envelope" size="big" />
+                  <Icon  name="envelope" size="big"  color='grey'/>
                 </label>
                 <Input
                   placeholder="Message"
@@ -130,7 +180,7 @@ const Dashboard =()=>{
               </Form.Field>
               <Form.Field inline>
                 <label>
-                  <Icon inverted name="phone" size="big" />
+                  <Icon  name="phone" size="big"  color='grey'/>
                 </label>
                 <Input
                   placeholder="Phone"
@@ -139,7 +189,7 @@ const Dashboard =()=>{
                   transparent
                 />
               </Form.Field>
-              <Button style={{ paddingInline: "60px", height: "40px" }}>
+              <Button style={{ paddingInline: "60px", height: "40px" ,backgroundColor:'#cfcfcf'}}>
                 Submit
               </Button>
             </Form>
@@ -149,18 +199,19 @@ const Dashboard =()=>{
     };
     const Style = {
       cardContainer: {
-        backgroundColor: "#00101f",
+        backgroundColor: "#b3e5fc",
         color: "#bebebe",
       },
       card: {
-        backgroundColor: "#131722",
-        padding: "2rem",
+        backgroundColor: "#98dcfc",
+        padding: "1rem",
         borderRadius: "1rem",
-        border: "1px solid #5c5a5a",
+        border: "1px solid #E4E6ED",
         textAlign: "center",
         color: "rgb(0, 0, 26)",
         transition: ".5s",
         margin: "1rem 2rem",
+        
       },
     };
     const insideStyles = {
@@ -187,7 +238,7 @@ const Dashboard =()=>{
                     <Promoline Size="20px" Weight="500" PadBlock="4rem" />{" "}
                   </Desktop>
                 </div>
-                {!login?
+                {!user?
                 <Form>
                   <Form.Field inline stackable>
                     <Input placeholder="Email address" size="big" />
@@ -200,13 +251,14 @@ const Dashboard =()=>{
                       Get Started
                     </Button>
                   </Form.Field>
-                </Form>:null}
+                </Form>
+                :null}
               </Col>
             </div>
           </div>
         </Parallax>
         <div style={Style.cardContainer}>
-          <Grid stackable divided columns={4}>
+          <Grid stackable columns={4}>
             <ChartCard currencyName="btc" />
             <ChartCard currencyName="eth" />
             <ChartCard currencyName="bch" />
@@ -243,8 +295,7 @@ const Dashboard =()=>{
             leftMargin="45px"
           />
         </Mobile>
-
-        <Footer />
+        <Footer/>
       </div>
     );
   }
