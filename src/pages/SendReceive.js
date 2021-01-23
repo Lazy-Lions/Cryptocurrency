@@ -91,6 +91,7 @@ const SendReceive =()=> {
             
           <Modal.Body style={{backgroundColor:'#f0f4c3'}}>
             <Segment placeholder style={{backgroundColor:'#f0f4c3'}}>
+              <Icon name='close' size='large' color='red' onClick={()=>setShow(false)} style={{cursor:'pointer', margin:'.5rem'}}/>
             <Grid columns={2} relaxed='very'centered stackable>
             <Grid.Column verticalAlign='middle'>
             <Header as='h3' color='orange'><Icon  name='send' /> Send </Header>

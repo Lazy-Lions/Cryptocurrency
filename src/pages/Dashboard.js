@@ -45,7 +45,7 @@ class CurrencyChart extends React.PureComponent {
       colorTheme: "light",
       trendLineColor: "#37a6ef",
       underLineColor: "#FFECB3",
-      width: 200,
+      width: 220,
       height: 150,
 
       locale: "en",
@@ -56,13 +56,13 @@ class CurrencyChart extends React.PureComponent {
   render() {
     return (
       <div
-        class="tradingview-widget-containe container"
+        class="tradingview-widget-containe container d-flex justify-content-center "
         ref={this._ref}
         // style={{ width: "600px" }}
         style={{ pointerEvents: "none", cursor: "default" }}
       >
         <div
-          class="tradingview-widget-container__widget"
+          class="tradingview-widget-container__widget "
           style={{ pointerEvents: "none", cursor: "default" }}
         ></div>
       </div>

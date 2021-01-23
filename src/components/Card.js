@@ -120,73 +120,127 @@ import axios from "axios";
       }
     }
     return (
-      <Segment style={Style.card ,bodyColor} >
-      <Card style={Style.card }className="card_body" >
-        <Card.Body style={bodyColor}>
-          <Card.Title>
-            <Row
-              /* style={{ padding: 20, paddingBottom: 5 }} */
-              className="row justify-content-between "
-            >
-              <h4 style={Style.title}>Current Balance</h4>
-              {props.coin === "btc" ? (
-                <RiBitCoinFill
-                  size={60}
-                  style={{
-                    backgroundColor: "#FF9319",
-                    padding: 10,
-                    borderRadius: 10,
-                    marginRight: 10,
-                  }}
-                />
-              ) : props.coin === "eth" ? (
-                <FaEthereum
-                  size={60}
-                  style={{
-                    backgroundColor: "#62688F",
-                    padding: 10,
-                    borderRadius: 10,
-                    marginRight: 10,
-                  }}
-                />
-              ) : props.coin === "ltc" ? (
-                <SiLitecoin
-                  size={60}
-                  style={{
-                    backgroundColor: "#325A98",
-                    padding: 10,
-                    borderRadius: 10,
-                    marginRight: 10,
-                  }}
-                />
-              ) : (
-                <GrBitcoin
-                  size={60}
-                  style={{
-                    backgroundColor: "#30B750",
-                    padding: 10,
-                    borderRadius: 10,
-                    marginRight: 10,
-                  }}
-                />
-              )}
-            </Row>
-            <Row style={(Style.balance, bodyColor)}>
-              <h1 ><Icon name='dollar'/>
-              {props.coin === 'btc'? confirmbtc : props.coin === 'eth'? confirmeth :props.coin === 'bch'? confirmbch :props.coin === 'ltc'?confirmltc: null }
-              </h1>
-            </Row>
-          </Card.Title>
-          <Card.Text style={Style.balance}>
-            <h4>
-            Unconfirmed: {props.coin === 'btc'? unconfirmbtc : props.coin === 'eth'? unconfirmeth :props.coin === 'bch'? unconfirmbch :props.coin === 'ltc'? unconfirmltc : null }</h4>
-            <h4>Total:
-            {props.coin === 'btc'? totalbtc : props.coin === 'eth'? totaleth :props.coin === 'bch'? totalbch :props.coin === 'ltc'? totalltc : null}</h4>
-            
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      </Segment>
+      <div class='wallet'>
+      <div class="container">
+      <Segment style= {Style.card, bodyColor} >
+            <Card style={Style.card }className="card_body" >
+              <Card.Body style={bodyColor}>
+                <Card.Title>
+                  <Row
+                    /* style={{ padding: 20, paddingBottom: 5 }} */
+                    className="row justify-content-between "
+                  >
+                    <h4 style={Style.title}>Current Balance</h4>
+                    {props.coin === "btc" ? (
+                      <RiBitCoinFill
+                        size={60}
+                        style={{
+                          backgroundColor: "#FF9319",
+                          padding: 10,
+                          borderRadius: 10,
+                          marginRight: 10,
+                        }}
+                      />
+                    ) : props.coin === "eth" ? (
+                      <FaEthereum
+                        size={60}
+                        style={{
+                          backgroundColor: "#62688F",
+                          padding: 10,
+                          borderRadius: 10,
+                          marginRight: 10,
+                        }}
+                      />
+                    ) : props.coin === "ltc" ? (
+                      <SiLitecoin
+                        size={60}
+                        style={{
+                          backgroundColor: "#325A98",
+                          padding: 10,
+                          borderRadius: 10,
+                          marginRight: 10,
+                        }}
+                      />
+                    ) : (
+                      <GrBitcoin
+                        size={60}
+                        style={{
+                          backgroundColor: "#30B750",
+                          padding: 10,
+                          borderRadius: 10,
+                          marginRight: 10,
+                        }}
+                      />
+                    )}
+                  </Row>
+                  <Row style={(Style.balance, bodyColor)}>
+                    <h1 ><Icon name='dollar'/>
+                    {props.coin === 'btc'? confirmbtc : props.coin === 'eth'? confirmeth :props.coin === 'bch'? confirmbch :props.coin === 'ltc'?confirmltc: null }
+                    </h1>
+                  </Row>
+                </Card.Title>
+                <Card.Text style={Style.balance}>
+                  <h4>
+                  Unconfirmed: {props.coin === 'btc'? unconfirmbtc : props.coin === 'eth'? unconfirmeth :props.coin === 'bch'? unconfirmbch :props.coin === 'ltc'? unconfirmltc : null }</h4>
+                  <h4>Total:
+                  {props.coin === 'btc'? totalbtc : props.coin === 'eth'? totaleth :props.coin === 'bch'? totalbch :props.coin === 'ltc'? totalltc : null}</h4>
+                  
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            </Segment>
+        <div class="overlay" style={bodyColor}>
+    <div class="text">
+    <h3>Public key</h3>
+        <marquee width="100%" scrollamount="5">
+        {props.coin === 'btc'? 
+        btcp
+        : props.coin === 'eth'? 
+        ethp
+        :props.coin === 'bch'? 
+        bchp
+        :props.coin === 'ltc'? 
+        ltcp
+        : null }
+        </marquee>
+        <Icon name='copy' style={{cursor:'pointer'}}
+        onClick={() =>  navigator.clipboard.writeText(
+        props.coin === 'btc'? 
+        btcp
+        : props.coin === 'eth'? 
+        ethp
+        :props.coin === 'bch'? 
+        bchp
+        :props.coin === 'ltc'? 
+        ltcp
+        : null)}/>
+    <h3>Private key</h3>
+    <marquee width="100%" scrollamount="5">
+        {props.coin === 'btc'? 
+        btcpr
+        : props.coin === 'eth'? 
+        ethpr
+        :props.coin === 'bch'? 
+        bchpr
+        :props.coin === 'ltc'? 
+        ltcpr
+        : null }
+        </marquee>
+        <Icon name='copy' style={{cursor:'pointer'}}
+        onClick={() =>  navigator.clipboard.writeText(
+        props.coin === 'btc'? 
+        btcpr
+        : props.coin === 'eth'? 
+        ethpr
+        :props.coin === 'bch'? 
+        bchpr
+        :props.coin === 'ltc'? 
+        ltcpr
+        : null)}/>
+      </div>
+  </div>
+  </div>
+</div>
     );
 }
 export default MyCard

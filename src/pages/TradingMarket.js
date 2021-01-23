@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
 import Coin from "../components/Coin";
-import { Col, Container, Row, CardDeck } from "react-bootstrap";
+import { Col, Row, CardDeck } from "react-bootstrap";
 import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
 function MyList() {

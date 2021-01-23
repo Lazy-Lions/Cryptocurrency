@@ -4,9 +4,7 @@ import "firebase/storage";
 import '../components/Profile.css'
 import fire from "../components/config/fire";
 import Img from '../components/img/Avatar.png'
-import { Container, Image,Icon, Grid, Card, Statistic, Button} from 'semantic-ui-react'
-import { ProgressBar } from "react-bootstrap";
-import { Sparklines, SparklinesBars } from 'react-sparklines';
+import { Image,Icon,Button} from 'semantic-ui-react'
 export default class Profile extends Component {
     constructor(props) {
         super(props);
@@ -28,6 +26,11 @@ export default class Profile extends Component {
       }
       handleChange=(e)=>{
         this.setState({image:e.target.files[0]})
+        let reader = new FileReader();
+    reader.onload = (e) => {
+      this.setState({url: e.target.result});
+    };
+    reader.readAsDataURL(e.target.files[0]);
     }
       handleUpload=()=>{
         const {image}=this.state
@@ -69,12 +72,10 @@ export default class Profile extends Component {
           })
     }
     render() {
-        const Style={
 
-        }
         return (
                 <div  className='fixPad ' >
-                    <div className="AddImage d-flex justify-content-center ">
+                    <div className="AddImage d-flex justify-content-center "style={{ margin:'1rem'}} >
                        <input
                         type="file"
                         id="my_file"
@@ -83,20 +84,19 @@ export default class Profile extends Component {
                         onChange={this.handleChange}
                         />
                         <Icon.Group size='huge'>
-                        <Image className='img-thumbnail' src={this.state.url || Img} alt="Upload image"  size='medium'/>
+                        <Image rounded style={{border: '4px solid grey'}} src={this.state.url || Img} alt="Upload image"  height='300' width='300'/>
                         <Icon corner name='camera' onClick={this.showFileUpload} style={{cursor: 'pointer'}}/>
                         </Icon.Group> 
                            
                     </div>
                     <div className="d-flex justify-content-center">
-                    <ProgressBar animated now={this.state.Progress} />
-                    <Button onClick={this.handleUpload}>Upload</Button>
+                    <Button onClick={this.handleUpload} color='teal'>Save</Button>
                     </div>
                 <div className='profile'>
                 <div class="cards-list">
   
 <div class="card 1">
-  <div class="card_image"> <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" /> </div>
+  <div class="card_image"> <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" alt=''/> </div>
   <div class="card_title title-white">
     <h3>Total</h3>
     <p>$1500</p>
@@ -105,7 +105,7 @@ export default class Profile extends Component {
 
   <div class="card 2">
   <div class="card_image">
-    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" alt=''/>
     </div>
   <div class="card_title title-white">
   <h3>Send</h3>
@@ -115,7 +115,7 @@ export default class Profile extends Component {
 
 <div class="card 3">
   <div class="card_image">
-    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" alt=''/>
   </div>
   <div class="card_title">
   <h3>Received</h3>
@@ -125,7 +125,7 @@ export default class Profile extends Component {
   
   <div class="card 4">
   <div class="card_image">
-    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" alt=''/>
     </div>
   <div class="card_title title-black">
   <h3>Exchange</h3>
@@ -133,7 +133,8 @@ export default class Profile extends Component {
   </div>
   </div>
 
-</div></div>
+    </div>
+    </div>
                 </div>
         )
     }
