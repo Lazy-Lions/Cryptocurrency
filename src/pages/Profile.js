@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import firebase from 'firebase';
 import "firebase/storage";
+import '../components/Profile.css'
 import fire from "../components/config/fire";
 import Img from '../components/img/Avatar.png'
 import { Container, Image,Icon, Grid, Card, Statistic, Button} from 'semantic-ui-react'
 import { ProgressBar } from "react-bootstrap";
 import { Sparklines, SparklinesBars } from 'react-sparklines';
-
 export default class Profile extends Component {
     constructor(props) {
         super(props);
@@ -69,25 +69,12 @@ export default class Profile extends Component {
           })
     }
     render() {
-        const {Fname, Lname, btcp, ethp, bchp, ltcp, image}=this.state
-        const SparkCard =(props)=>{
-            return(
-                <Grid.Column>
-                    <Card centered color='blue'>
-                    <Sparklines data={props.sparkData}>
-                        <SparklinesBars />
-                    </Sparklines>
-                    <Statistic label={props.sparkLabel} value= {props.transaction} />                       
-                    </Card>
-                </Grid.Column>
-            )
+        const Style={
+
         }
-        
         return (
-                <Container fluid className='fixPad'>
-                <Grid.Row >
-                <Grid.Column width={3} style={{margin:'2rem'}}>
-                    <div className="AddImage">
+                <div  className='fixPad ' >
+                    <div className="AddImage d-flex justify-content-center ">
                        <input
                         type="file"
                         id="my_file"
@@ -96,52 +83,58 @@ export default class Profile extends Component {
                         onChange={this.handleChange}
                         />
                         <Icon.Group size='huge'>
-                        <Image src={this.state.url || Img} alt="Upload image"  size='medium'/>
+                        <Image className='img-thumbnail' src={this.state.url || Img} alt="Upload image"  size='medium'/>
                         <Icon corner name='camera' onClick={this.showFileUpload} style={{cursor: 'pointer'}}/>
-                        </Icon.Group>    
+                        </Icon.Group> 
+                           
                     </div>
-                    <ProgressBar animated now={this.state.Progress}  />
+                    <div className="d-flex justify-content-center">
+                    <ProgressBar animated now={this.state.Progress} />
                     <Button onClick={this.handleUpload}>Upload</Button>
-                </Grid.Column>
-                <Grid.Column width={13} style={{margin:'2rem'}}>
-                <Card fluid style={{backgroundColor:'#f0f4c3'}}>
-                    <Card.Content>
-                        <Card.Header><h1 style={{color:"maroon"}}>{Fname}  {Lname}</h1></Card.Header>
-                        <Card.Description>
-                        <p style={{color:'orange'}}>BTC : {btcp}</p>
-                        <p style={{color:'blue'}}>ETH : {ethp}</p>
-                        <p style={{color:'grey'}}>BCH : {bchp}</p>
-                        <p style={{color:'green'}}>LTC : {ltcp}</p>
-                        </Card.Description>
-                    </Card.Content>
-                </Card>
-                </Grid.Column>
-                </Grid.Row>
-                <Grid columns={4} stackable divided  >
-                    <Grid.Row columns={4} >
-                        <SparkCard 
-                            sparkData={[5, 10, 5, 25, 15, 5, 10, 5, 20, 5, 10, 10, 5, 20, 5, 10]}
-                            sparkLabel='Total Transaction'
-                            transaction='16,00'
-                        />
-                        <SparkCard 
-                            sparkData={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}
-                            sparkLabel='Send'
-                            transaction='5,500'
-                        />
-                        <SparkCard 
-                            sparkData={[5, 10, 5, 25, 15, 5, 10, 5, 20, 5, 10, 10, 5, 20, 5, 10]}
-                            sparkLabel='Received'
-                            transaction='4,500'
-                        />
-                        <SparkCard 
-                            sparkData={[5, 10, 5, 20, 10, 5, 20, 10, 5, 20, 10, 5, 10, 5, 20, 5]}
-                            sparkLabel='Exchanged'
-                            transaction='6,000'
-                        />
-                    </Grid.Row>
-                </Grid>
-                </Container>
+                    </div>
+                <div className='profile'>
+                <div class="cards-list">
+  
+<div class="card 1">
+  <div class="card_image"> <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" /> </div>
+  <div class="card_title title-white">
+    <h3>Total</h3>
+    <p>$1500</p>
+  </div>
+</div>
+
+  <div class="card 2">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+    </div>
+  <div class="card_title title-white">
+  <h3>Send</h3>
+    <p>$500</p>
+  </div>
+</div>
+
+<div class="card 3">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+  </div>
+  <div class="card_title">
+  <h3>Received</h3>
+    <p>$500</p>
+  </div>
+</div>
+  
+  <div class="card 4">
+  <div class="card_image">
+    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+    </div>
+  <div class="card_title title-black">
+  <h3>Exchange</h3>
+    <p>$500</p>
+  </div>
+  </div>
+
+</div></div>
+                </div>
         )
     }
 }

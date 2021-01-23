@@ -21,7 +21,7 @@
 .market { 
   box-sizing: border-box;
   display: inherit;
-  padding-left: 1.25%;
+  padding-inline: 1.25%;
   background-color: #1a1a1c;
   color: #fff;
 }
@@ -109,3 +109,4 @@
 .example{
   position:absolute !important;
   }
+ 

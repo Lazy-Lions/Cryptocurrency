@@ -33,14 +33,8 @@ function MyList() {
     );
   
     return (
-      <Container fluid className="market">
+      <div  className="market fixPad" style={{backgroundImage:'url(https://i.pinimg.com/originals/30/b8/17/30b8174c6f1a07e0af9bcf41fec3a5f5.gif)',backgroundSize:'100% 100%'}}>
         <Col>
-          <Row>
-            <div className="my-4 px-4"></div>
-          </Row>
-          <Row>
-            <div className="my-4"></div>
-          </Row>
           <Row style={{ alignItems: "center", justifyContent: "center" }}>
             <CardDeck>
               {filteredCoins.map((coin) => {
@@ -64,7 +58,7 @@ function MyList() {
             </CardDeck>
           </Row>
         </Col>
-      </Container>
+      </div>
     );
   }
   const DetailsChart = (props) => {

@@ -80,7 +80,7 @@ const Coin = ({
               style={{
                 ...bodyColor,
                 ...{
-                  color: priceChange < 0 ? "#ff1744" : "#00c853",
+                  color: priceChange < 0 ? "#ff1744" : "#00695c",
                   fontWeight: "bold",
                 },
               }}
