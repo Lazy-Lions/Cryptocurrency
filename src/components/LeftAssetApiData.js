@@ -8,14 +8,7 @@ import Responsive from "react-responsive";
 const Desktop = (props) => <Responsive {...props} minWidth={992} />;
 const Mobile = (props) => <Responsive {...props} maxWidth={991} />;
 
-const  LeftAssetItem =({
-  device,
-  name,
-  symbol,
-  image,
-  price,
-  priceChange,
-})=> {
+const LeftAssetItem = ({ device, name, symbol, image, price, priceChange }) => {
   return device === "desktop" ? (
     <Table.Row>
       <Table.Cell className="">
@@ -35,7 +28,7 @@ const  LeftAssetItem =({
       <Table.Cell>{price.toLocaleString()}</Table.Cell>
       <Table.Cell
         style={{
-          color: priceChange < 0 ? "#ff1744" : "#00c853",
+          color: priceChange < 0 ? "#ffcc80" : "#1565c0",
         }}
       >
         {priceChange.toFixed(2)}%
@@ -60,16 +53,15 @@ const  LeftAssetItem =({
       <td>{price.toLocaleString()}</td>
       <td
         style={{
-          color: priceChange < 0 ? "#ff1744" : "#00c853",
+          color: priceChange < 0 ? "#ffcc80" : "#1565c0",
         }}
       >
         {priceChange.toFixed(2)}%
       </td>
     </tr>
   );
-}
+};
 export default class LeftAssetApiData extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -79,7 +71,7 @@ export default class LeftAssetApiData extends Component {
   apiCall = () => {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=true"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=true",
       )
       .then((res) => {
         this.setState({ coins: res.data });
@@ -96,19 +88,16 @@ export default class LeftAssetApiData extends Component {
     clearInterval(this.interval);
   }
 
-
   render() {
     const filter1 = this.state.coins.filter(
       (coin) =>
         coin.symbol === "btc" ||
         coin.symbol === "eth" ||
         coin.symbol === "ltc" ||
-        coin.symbol === "bch"
+        coin.symbol === "bch",
     );
 
-    const filteredCoins = filter1.filter((coin) =>
-      coin.name.toLowerCase()
-    );
+    const filteredCoins = filter1.filter((coin) => coin.name.toLowerCase());
     return (
       <>
         <Desktop>
@@ -117,7 +106,8 @@ export default class LeftAssetApiData extends Component {
               className="ui very basic"
               style={{
                 color: "white",
-                background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+                background:
+                  "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
                 backgroundColor: "#585e81",
                 border: "none",
                 padding: 15,
@@ -157,16 +147,22 @@ export default class LeftAssetApiData extends Component {
           </Grid.Column>
         </Desktop>
         <Mobile>
-          <Segment style={{ 
-                background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
-                backgroundColor: "#585e81",
-                color: "white" }}>
+          <Segment
+            style={{
+              background:
+                "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+              backgroundColor: "#585e81",
+              color: "white",
+            }}
+          >
             <Tbl
               responsive
-              style={{ 
-                background: "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
+              style={{
+                background:
+                  "linear-gradient(150deg,rgba(250,0,0,0.5),transparent)",
                 backgroundColor: "#585e81",
-                color: "white" }}
+                color: "white",
+              }}
             >
               <thead>
                 <tr>

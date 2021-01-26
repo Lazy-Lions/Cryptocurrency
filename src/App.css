@@ -2,23 +2,25 @@
 * {
   font-family: "Montserrat", sans-serif;
 }
-.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+.dimmed.dimmable > .ui.animating.dimmer,
+.dimmed.dimmable > .ui.visible.dimmer,
+.ui.active.dimmer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .ui.modal,
 .ui.active.modal {
-  margin: 0 auto!important;
-  bottom: auto!important;
-  left: auto!important;
-  right: auto!important;
-  top: auto!important;
+  margin: 0 auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
   transform-origin: center !important;
-  transition: all ease .5s;
+  transition: all ease 0.5s;
 }
 
-.market { 
+.market {
   box-sizing: border-box;
   display: inherit;
   padding-inline: 1.25%;
@@ -101,14 +103,13 @@
 }
 .input-group:focus-within input {
   color: black !important;
-  
 }
 .input-group input {
   color: black !important;
 }
-.example{
-  position:absolute !important;
-  }
+.example {
+  position: absolute !important;
+}
 /* ---------------------------------------------------------Wallet Card---------------------------------------------- */
 .wallet .image {
   display: block;
@@ -121,11 +122,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #008CBA;
+  background-color: #008cba;
   overflow: hidden;
   width: 100%;
   height: 0;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
 
 .wallet .container:hover .overlay {
@@ -142,4 +143,67 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+/* ---------------------------------------------------------Profile Card---------------------------------------------- */
+.profile .cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.profile .card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.profile .card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.profile .card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.profile .card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.profile .card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.profile .title-white {
+  color: white;
+}
+
+.profile .title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .profile .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
 }
